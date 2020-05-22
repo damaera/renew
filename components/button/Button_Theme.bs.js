@@ -5,27 +5,35 @@ var Theme_Colors = require("../theme/Theme_Colors.bs.js");
 
 var defaultTheme_textColor = {
   solid: Theme_Colors.light.background,
+  light: Theme_Colors.light.foreground,
   outline: Theme_Colors.light.foreground,
   ghost: Theme_Colors.light.foreground
 };
 
-var defaultTheme_paddingVertical = {
-  small: 6,
-  normal: 8,
-  big: 16
+var defaultTheme_height = {
+  xs: 24,
+  sm: 32,
+  md: 40,
+  lg: 48,
+  xl: 56
 };
 
 var defaultTheme_paddingHorizontal = {
-  small: 6,
-  normal: 16,
-  big: 32
+  xs: 8,
+  sm: 12,
+  md: 16,
+  lg: 20,
+  xl: 24
 };
 
 var defaultTheme = {
   borderRadius: 4,
+  borderWidth: 2,
   textColor: defaultTheme_textColor,
-  paddingVertical: defaultTheme_paddingVertical,
-  paddingHorizontal: defaultTheme_paddingHorizontal
+  fontWeight: /* bold */-1055161979,
+  height: defaultTheme_height,
+  paddingHorizontal: defaultTheme_paddingHorizontal,
+  textTransform: /* none */-922086728
 };
 
 exports.defaultTheme = defaultTheme;

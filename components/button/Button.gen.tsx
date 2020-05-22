@@ -4,46 +4,56 @@
 
 import * as React from 'react';
 
-const $$toRE313213742: { [key: string]: any } = {"primary": 58474434, "secondary": -499495052, "success": 944645571, "error": -215364664, "info": -977586066, "warning": 164354652, "neutral": -349573817};
+const $$toRE266350424: { [key: string]: any } = {"solid": 12956715, "ghost": 324570959, "outline": -507635838, "light": -184774442};
 
-const $$toRE486003711: { [key: string]: any } = {"solid": 12956715, "light": -184774442, "outline": -507635838, "ghost": 324570959};
+const $$toRE808406435: { [key: string]: any } = {"primary": 58474434, "secondary": -499495052, "success": 944645571, "danger": 512905955, "info": -977586066, "warning": 164354652, "neutral": -349573817};
 
-const $$toRE798217195: { [key: string]: any } = {"normal": 812216871, "small": -9768761, "big": 4896960};
+const $$toRE981135708: { [key: string]: any } = {"xs": 26875, "sm": 25754, "md": 24407, "lg": 24187, "xl": 26868};
 
 // tslint:disable-next-line:no-var-requires
 const ButtonBS = require('./Button.bs');
 
-// tslint:disable-next-line:interface-over-type-literal
-export type sizeT = "normal" | "small" | "big";
+import {Style_t as ReactNative_Style_t} from '../../components/shims/ReactNative.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
-export type typeT = "solid" | "light" | "outline" | "ghost";
+export type sizeT = "xs" | "sm" | "md" | "lg" | "xl";
 
 // tslint:disable-next-line:interface-over-type-literal
-export type variantT = 
+export type variantColorT = 
     "primary"
   | "secondary"
   | "success"
-  | "error"
+  | "danger"
   | "info"
   | "warning"
   | "neutral";
 
 // tslint:disable-next-line:interface-over-type-literal
+export type variantT = "solid" | "ghost" | "outline" | "light";
+
+// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
+  readonly color?: variantColorT; 
+  readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
+  readonly styleButton?: ReactNative_Style_t; 
+  readonly styleText?: ReactNative_Style_t; 
+  readonly suffixElement?: JSX.Element; 
   readonly text: string; 
-  readonly type_?: typeT; 
   readonly variant?: variantT
 };
 
 export const $$default: React.ComponentType<{
+  readonly color?: variantColorT; 
+  readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
+  readonly styleButton?: ReactNative_Style_t; 
+  readonly styleText?: ReactNative_Style_t; 
+  readonly suffixElement?: JSX.Element; 
   readonly text: string; 
-  readonly type_?: typeT; 
   readonly variant?: variantT
 }> = function Button(Arg1: any) {
-  const $props = {size:(Arg1.size == null ? undefined : $$toRE798217195[Arg1.size]), text:Arg1.text, type_:(Arg1.type_ == null ? undefined : $$toRE486003711[Arg1.type_]), variant:(Arg1.variant == null ? undefined : $$toRE313213742[Arg1.variant])};
+  const $props = {color:(Arg1.color == null ? undefined : $$toRE808406435[Arg1.color]), prefixElement:Arg1.prefixElement, size:(Arg1.size == null ? undefined : $$toRE981135708[Arg1.size]), styleButton:Arg1.styleButton, styleText:Arg1.styleText, suffixElement:Arg1.suffixElement, text:Arg1.text, variant:(Arg1.variant == null ? undefined : $$toRE266350424[Arg1.variant])};
   const result = React.createElement(ButtonBS.default, $props);
   return result
 };

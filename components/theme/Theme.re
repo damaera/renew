@@ -3,12 +3,14 @@ module Colors = Theme_Colors;
 type t = {
   colors: Colors.t,
   button: Button_Theme.t,
+  text: Text_Theme.t,
 };
 
 [@genType]
 let defaultTheme: t = {
   colors: Colors.light,
   button: Button_Theme.defaultTheme,
+  text: Text_Theme.defaultTheme,
 };
 
 let themeContext = React.createContext(defaultTheme);

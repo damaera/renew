@@ -27,9 +27,9 @@ export type t = {
   readonly success: string; 
   readonly successLight: string; 
   readonly successDark: string; 
-  readonly error: string; 
-  readonly errorLight: string; 
-  readonly errorDark: string; 
+  readonly danger: string; 
+  readonly dangerLight: string; 
+  readonly dangerDark: string; 
   readonly info: string; 
   readonly infoLight: string; 
   readonly infoDark: string; 

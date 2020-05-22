@@ -1,16 +1,18 @@
+module UIText = Text;
 open ReactNative;
 
-type sizeT = [ | `normal | `small | `big];
-type typeT = [ | `solid | `light | `outline | `ghost];
-type variantT = [
+type sizeT = [ | `xs | `sm | `md | `lg | `xl];
+type variantColorT = [
   | `primary
   | `secondary
   | `success
-  | `error
+  | `danger
   | `info
   | `warning
   | `neutral
 ];
+
+type variantT = [ | `solid | `ghost | `outline | `light];
 
 type colorT = {
   normal: string,
@@ -18,48 +20,61 @@ type colorT = {
   dark: string,
 };
 
-type typeStyleT = {
-  button: ReactNative.Style.t,
-  text: ReactNative.Style.t,
-};
-
 [@react.component]
 let make =
     (
       ~text,
-      ~size: sizeT=`normal,
-      ~variant: variantT=`neutral,
-      ~type_: typeT=`solid,
+      ~size: sizeT=`md,
+      ~variant: variantT=`solid,
+      ~color: variantColorT=`neutral,
+      ~prefixElement=?,
+      ~suffixElement=?,
+      ~styleButton=?,
+      ~styleText=?,
     ) => {
   let theme = React.useContext(Theme.themeContext);
+
+  let (isHover, setHover) = React.useState(() => false);
 
   let sizeStyle =
     Style.(
       switch (size) {
-      | `small =>
+      | `xs =>
         viewStyle(
-          ~paddingVertical=theme.button.paddingVertical.small->dp,
-          ~paddingHorizontal=theme.button.paddingHorizontal.small->dp,
+          ~height=theme.button.height.xs->dp,
+          ~paddingHorizontal=theme.button.paddingHorizontal.xs->dp,
           (),
         )
-      | `normal =>
+      | `sm =>
         viewStyle(
-          ~paddingVertical=theme.button.paddingVertical.normal->dp,
-          ~paddingHorizontal=theme.button.paddingHorizontal.normal->dp,
+          ~height=theme.button.height.sm->dp,
+          ~paddingHorizontal=theme.button.paddingHorizontal.sm->dp,
+          (),
+        )
+      | `md =>
+        viewStyle(
+          ~height=theme.button.height.md->dp,
+          ~paddingHorizontal=theme.button.paddingHorizontal.md->dp,
+          (),
+        )
+      | `lg =>
+        viewStyle(
+          ~height=theme.button.height.lg->dp,
+          ~paddingHorizontal=theme.button.paddingHorizontal.lg->dp,
           (),
         )
 
-      | `big =>
+      | `xl =>
         viewStyle(
-          ~paddingVertical=theme.button.paddingVertical.big->dp,
-          ~paddingHorizontal=theme.button.paddingHorizontal.big->dp,
+          ~height=theme.button.height.xl->dp,
+          ~paddingHorizontal=theme.button.paddingHorizontal.xl->dp,
           (),
         )
       }
     );
 
   let color = {
-    switch (variant) {
+    switch (color) {
     | `primary => {
         normal: theme.colors.primary,
         light: theme.colors.primaryLight,
@@ -75,10 +90,10 @@ let make =
         light: theme.colors.successLight,
         dark: theme.colors.successDark,
       }
-    | `error => {
-        normal: theme.colors.error,
-        light: theme.colors.errorLight,
-        dark: theme.colors.errorDark,
+    | `danger => {
+        normal: theme.colors.danger,
+        light: theme.colors.dangerLight,
+        dark: theme.colors.dangerDark,
       }
     | `info => {
         normal: theme.colors.info,
@@ -98,38 +113,113 @@ let make =
     };
   };
 
-  let typeStyle: typeStyleT =
+  let typeStyle =
     Style.(
-      switch (type_) {
-      | `solid => {
-          button: viewStyle(~backgroundColor=color.normal, ()),
-          text: textStyle(~color="#fff", ()),
-        }
-      | _ => {
-          button: viewStyle(~backgroundColor=color.normal, ()),
-          text: textStyle(~color="#fff", ()),
-        }
+      switch (variant) {
+      | `solid => (
+          viewStyle(
+            ~backgroundColor=color.normal,
+            ~borderColor=color.normal,
+            (),
+          ),
+          textStyle(~color=theme.button.textColor.solid, ()),
+        )
+      | `outline => (
+          viewStyle(
+            ~backgroundColor=theme.colors.background,
+            ~borderColor=color.normal,
+            (),
+          ),
+          textStyle(~color=color.normal, ()),
+        )
+      | `ghost => (
+          viewStyle(
+            ~backgroundColor=theme.colors.background,
+            ~borderColor=theme.colors.background,
+            (),
+          ),
+          textStyle(~color=color.normal, ()),
+        )
+      | `light => (
+          viewStyle(
+            ~backgroundColor=color.light,
+            ~borderColor=color.light,
+            (),
+          ),
+          textStyle(~color=color.dark, ()),
+        )
       }
     );
 
+  let (typeStyleButton, typeStyleText) = typeStyle;
+
   let resolvedStyle =
     Style.(
-      array([|
-        viewStyle(
-          ~borderRadius=theme.button.borderRadius,
-          ~backgroundColor=theme.colors.primary,
-          (),
+      arrayOption([|
+        Some(
+          viewStyle(
+            ~flexDirection=`row,
+            ~alignItems=`center,
+            ~borderRadius=theme.button.borderRadius,
+            ~borderWidth=theme.button.borderWidth,
+            ~backgroundColor=theme.colors.primary,
+            ~opacity=isHover ? 0.9 : 1.,
+            (),
+          ),
         ),
-        sizeStyle,
-        typeStyle.button,
+        Some(sizeStyle),
+        Some(typeStyleButton),
+        styleButton,
       |])
     );
 
-  let resolvedTextStyle = Style.(array([|typeStyle.text|]));
+  let resolvedTextStyle =
+    Style.(
+      arrayOption([|
+        Some(
+          textStyle(
+            ~fontWeight=theme.button.fontWeight,
+            ~textTransform=theme.button.textTransform,
+            (),
+          ),
+        ),
+        Some(typeStyleText),
+        styleText,
+      |])
+    );
 
-  <TouchableOpacity style=resolvedStyle>
-    <View> <Text style=resolvedTextStyle> text->React.string </Text> </View>
-  </TouchableOpacity>;
+  let spacerSize =
+    switch (size) {
+    | `xs => theme.text.fontSize.xs /. 2.
+    | `sm => theme.text.fontSize.sm /. 2.
+    | `md => theme.text.fontSize.md /. 2.
+    | `lg => theme.text.fontSize.lg /. 2.
+    | `xl => theme.text.fontSize.xl /. 2.
+    };
+
+  let onHoverIn = () => {
+    setHover(_ => true);
+  };
+  let onHoverOut = () => {
+    setHover(_ => false);
+  };
+
+  <Hoverable onHoverIn onHoverOut>
+    <TouchableOpacity
+      activeOpacity=0.7 style=resolvedStyle accessibilityRole=`button>
+      {switch (prefixElement) {
+       | Some(element) =>
+         <> <View> element </View> <Spacer x=spacerSize /> </>
+       | None => React.null
+       }}
+      <View> <UIText styleText=resolvedTextStyle value=text size /> </View>
+      {switch (suffixElement) {
+       | Some(element) =>
+         <> <Spacer x=spacerSize /> <View> element </View> </>
+       | None => React.null
+       }}
+    </TouchableOpacity>
+  </Hoverable>;
 };
 
 [@genType]
