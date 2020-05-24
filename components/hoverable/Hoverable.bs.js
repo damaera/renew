@@ -28,6 +28,11 @@ function Hoverable(Props) {
 
 var make = Hoverable;
 
+var $$default = Hoverable;
+
 exports.isWeb = isWeb;
 exports.make = make;
+exports.$$default = $$default;
+exports.default = $$default;
+exports.__esModule = true;
 /* isWeb Not a pure module */

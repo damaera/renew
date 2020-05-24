@@ -3,18 +3,21 @@
 
 var React = require("react");
 var Text_Theme = require("../text/Text_Theme.bs.js");
+var Theme_Space = require("./Theme_Space.bs.js");
 var Button_Theme = require("../button/Button_Theme.bs.js");
 var Theme_Colors = require("./Theme_Colors.bs.js");
 
 var defaultTheme = {
   colors: Theme_Colors.light,
   button: Button_Theme.defaultTheme,
-  text: Text_Theme.defaultTheme
+  text: Text_Theme.defaultTheme,
+  space: Theme_Space.defaultTheme
 };
 
 var themeContext = React.createContext(defaultTheme);
 
-function makeProps(value, children, param) {
+function makeProps(valueOpt, children, param) {
+  var value = valueOpt !== undefined ? valueOpt : defaultTheme;
   return {
           value: value,
           children: children
@@ -23,11 +26,8 @@ function makeProps(value, children, param) {
 
 var make = themeContext.Provider;
 
-var Colors;
-
 var $$default = make;
 
-exports.Colors = Colors;
 exports.defaultTheme = defaultTheme;
 exports.themeContext = themeContext;
 exports.makeProps = makeProps;

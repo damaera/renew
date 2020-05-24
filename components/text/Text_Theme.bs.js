@@ -12,9 +12,10 @@ var defaultTheme = {
     _2xl: 24,
     _3xl: 30,
     _4xl: 36,
-    _6xl: 64,
-    _5xl: 48
-  }
+    _5xl: 48,
+    _6xl: 64
+  },
+  fontFamily: ""
 };
 
 exports.defaultTheme = defaultTheme;

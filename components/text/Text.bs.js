@@ -30,6 +30,7 @@ function $$Text(Props) {
     );
   var resolvedStyle = [
     {
+      fontFamily: theme.text.fontFamily,
       fontSize: fontSize
     },
     styleText

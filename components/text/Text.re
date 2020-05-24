@@ -1,5 +1,3 @@
-open ReactNative;
-
 [@react.component]
 let make = (~value, ~styleText=?, ~size=`md) => {
   let theme = React.useContext(Theme.themeContext);
@@ -17,8 +15,14 @@ let make = (~value, ~styleText=?, ~size=`md) => {
     | `_5xl => theme.text.fontSize._5xl
     | `_6xl => theme.text.fontSize._6xl
     };
+
   let resolvedStyle =
-    Style.(arrayOption([|Some(textStyle(~fontSize, ())), styleText|]));
+    ReactNative.Style.(
+      arrayOption([|
+        Some(textStyle(~fontSize, ~fontFamily=theme.text.fontFamily, ())),
+        styleText,
+      |])
+    );
   <ReactNative.Text style=resolvedStyle>
     value->React.string
   </ReactNative.Text>;

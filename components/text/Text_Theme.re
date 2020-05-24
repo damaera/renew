@@ -7,14 +7,18 @@ type sizeT = {
   _2xl: float,
   _3xl: float,
   _4xl: float,
-  _6xl: float,
   _5xl: float,
+  _6xl: float,
 };
 
-type t = {fontSize: sizeT};
+type t = {
+  fontSize: sizeT,
+  fontFamily: string,
+};
 
 [@genType]
 let defaultTheme: t = {
+  fontFamily: "",
   fontSize: {
     xs: 12.,
     sm: 14.,

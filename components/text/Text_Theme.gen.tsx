@@ -15,11 +15,11 @@ export type sizeT = {
   readonly _2xl: number; 
   readonly _3xl: number; 
   readonly _4xl: number; 
-  readonly _6xl: number; 
-  readonly _5xl: number
+  readonly _5xl: number; 
+  readonly _6xl: number
 };
 
 // tslint:disable-next-line:interface-over-type-literal
-export type t = { readonly fontSize: sizeT };
+export type t = { readonly fontSize: sizeT; readonly fontFamily: string };
 
 export const defaultTheme: t = Text_ThemeBS.defaultTheme;

@@ -16,3 +16,6 @@ let make = (~children, ~onHoverIn, ~onHoverOut) =>
 
     <span onMouseEnter onMouseLeave> children </span>;
   };
+
+[@genType]
+let default = make;
