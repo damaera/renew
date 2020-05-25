@@ -14,27 +14,39 @@ type t = {
   //
   primary: string,
   primaryLight: string,
+  primaryLighter: string,
   primaryDark: string,
+  primaryDarker: string,
   //
   secondary: string,
   secondaryLight: string,
+  secondaryLighter: string,
   secondaryDark: string,
+  secondaryDarker: string,
   //
   success: string,
   successLight: string,
+  successLighter: string,
   successDark: string,
+  successDarker: string,
   //
   danger: string,
   dangerLight: string,
+  dangerLighter: string,
   dangerDark: string,
+  dangerDarker: string,
   //
   info: string,
   infoLight: string,
+  infoLighter: string,
   infoDark: string,
+  infoDarker: string,
   //
   warning: string,
   warningLight: string,
+  warningLighter: string,
   warningDark: string,
+  warningDarker: string,
 };
 
 [@genType]
@@ -53,26 +65,38 @@ let light: t = {
   neutral900: "#060606",
   //
   primary: "#3f51b5",
-  primaryDark: "#002984",
-  primaryLight: "#757de8",
+  primaryDark: "#303f9f",
+  primaryDarker: "#1a237e",
+  primaryLight: "#7986cb",
+  primaryLighter: "#c5cae9",
   //
   secondary: "#e91e63",
-  secondaryDark: "#b0003a",
-  secondaryLight: "#ff6090",
+  secondaryDark: "#c2185b",
+  secondaryDarker: "#880e4f",
+  secondaryLight: "#f06292",
+  secondaryLighter: "#f8bbd0",
   //
   success: "#4caf50",
-  successDark: "#087f23",
-  successLight: "#80e27e",
+  successDark: "#388e3c",
+  successDarker: "#1b5e20",
+  successLight: "#81c784",
+  successLighter: "#c8e6c9",
   //
   danger: "#f44336",
   dangerDark: "#ba000d",
-  dangerLight: "#ff7961",
+  dangerDarker: "#b71c1c",
+  dangerLight: "#e57373",
+  dangerLighter: "#ffcdd2",
   //
   info: "#2196f3",
-  infoDark: "#0069c0",
-  infoLight: "#6ec6ff",
+  infoDark: "#1976d2",
+  infoDarker: "#0d47a1",
+  infoLight: "#64b5f6",
+  infoLighter: "#bbdefb",
   //
   warning: "#ffc107",
-  warningDark: "#c79100",
-  warningLight: "#fff350",
+  warningDark: "#ffa000",
+  warningDarker: "#ff6f00",
+  warningLight: "#ffd54f",
+  warningLighter: "#ffecb3",
 };

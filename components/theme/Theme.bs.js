@@ -6,8 +6,10 @@ var Text_Theme = require("../text/Text_Theme.bs.js");
 var Theme_Space = require("./Theme_Space.bs.js");
 var Button_Theme = require("../button/Button_Theme.bs.js");
 var Theme_Colors = require("./Theme_Colors.bs.js");
+var Theme_Breakpoints = require("./Theme_Breakpoints.bs.js");
 
 var defaultTheme = {
+  breakpoints: Theme_Breakpoints.defaultTheme,
   colors: Theme_Colors.light,
   button: Button_Theme.defaultTheme,
   text: Text_Theme.defaultTheme,

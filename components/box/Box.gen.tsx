@@ -22,6 +22,8 @@ const $$toRE826265118: { [key: string]: any } = {"hidden": -862584982, "scroll":
 
 const $$toRE866454557: { [key: string]: any } = {"center": 98248149, "flexEnd": 924268066, "flexStart": 662439529, "spaceAround": -485895757, "spaceBetween": 516682146, "stretch": -162316795};
 
+const $$toRE952213817: { [key: string]: any } = {"flex": -1010954439, "none": -922086728};
+
 // tslint:disable-next-line:no-var-requires
 const BoxBS = require('./Box.bs');
 
@@ -32,6 +34,15 @@ import {Style_margin as ReactNative_Style_margin} from '../../components/shims/R
 import {Style_size as ReactNative_Style_size} from '../../components/shims/ReactNative.shim';
 
 import {Style_t as ReactNative_Style_t} from '../../components/shims/ReactNative.shim';
+
+// tslint:disable-next-line:interface-over-type-literal
+export type resSizeT = {
+  readonly xs: ReactNative_Style_size; 
+  readonly sm: ReactNative_Style_size; 
+  readonly md: ReactNative_Style_size; 
+  readonly lg: ReactNative_Style_size; 
+  readonly xl: ReactNative_Style_size
+};
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
@@ -82,10 +93,14 @@ export type Props = {
   readonly borderWidth?: number; 
   readonly bottom?: ReactNative_Style_size; 
   readonly children?: React.ReactNode; 
+  readonly component?: JSX.Element; 
   readonly direction?: 
     "inherit_"
   | "ltr"
   | "rtl"; 
+  readonly display?: 
+    "flex"
+  | "none"; 
   readonly end_?: ReactNative_Style_size; 
   readonly flex?: number; 
   readonly flexBasis?: ReactNative_Style_margin; 
@@ -138,6 +153,7 @@ export type Props = {
   readonly ps?: ReactNative_Style_size; 
   readonly pt?: ReactNative_Style_size; 
   readonly pv?: ReactNative_Style_size; 
+  readonly resW?: resSizeT; 
   readonly right?: ReactNative_Style_size; 
   readonly start?: ReactNative_Style_size; 
   readonly style?: ReactNative_Style_t; 
@@ -194,10 +210,14 @@ export const $$default: React.ComponentType<{
   readonly borderWidth?: number; 
   readonly bottom?: ReactNative_Style_size; 
   readonly children?: React.ReactNode; 
+  readonly component?: JSX.Element; 
   readonly direction?: 
     "inherit_"
   | "ltr"
   | "rtl"; 
+  readonly display?: 
+    "flex"
+  | "none"; 
   readonly end_?: ReactNative_Style_size; 
   readonly flex?: number; 
   readonly flexBasis?: ReactNative_Style_margin; 
@@ -250,6 +270,7 @@ export const $$default: React.ComponentType<{
   readonly ps?: ReactNative_Style_size; 
   readonly pt?: ReactNative_Style_size; 
   readonly pv?: ReactNative_Style_size; 
+  readonly resW?: resSizeT; 
   readonly right?: ReactNative_Style_size; 
   readonly start?: ReactNative_Style_size; 
   readonly style?: ReactNative_Style_t; 
@@ -257,7 +278,7 @@ export const $$default: React.ComponentType<{
   readonly w?: ReactNative_Style_size; 
   readonly zIndex?: number
 }> = function Box(Arg1: any) {
-  const $props = {alignContent:(Arg1.alignContent == null ? undefined : $$toRE866454557[Arg1.alignContent]), alignItems:(Arg1.alignItems == null ? undefined : $$toRE719148934[Arg1.alignItems]), alignSelf:(Arg1.alignSelf == null ? undefined : $$toRE541798403[Arg1.alignSelf]), aspectRatio:Arg1.aspectRatio, bg:Arg1.bg, borderBottomColor:Arg1.borderBottomColor, borderBottomEndRadius:Arg1.borderBottomEndRadius, borderBottomLeftRadius:Arg1.borderBottomLeftRadius, borderBottomRightRadius:Arg1.borderBottomRightRadius, borderBottomStartRadius:Arg1.borderBottomStartRadius, borderBottomWidth:Arg1.borderBottomWidth, borderColor:Arg1.borderColor, borderEndColor:Arg1.borderEndColor, borderEndWidth:Arg1.borderEndWidth, borderLeftColor:Arg1.borderLeftColor, borderLeftWidth:Arg1.borderLeftWidth, borderRadius:Arg1.borderRadius, borderRightColor:Arg1.borderRightColor, borderRightWidth:Arg1.borderRightWidth, borderStartColor:Arg1.borderStartColor, borderStartWidth:Arg1.borderStartWidth, borderTopColor:Arg1.borderTopColor, borderTopEndRadius:Arg1.borderTopEndRadius, borderTopLeftRadius:Arg1.borderTopLeftRadius, borderTopRightRadius:Arg1.borderTopRightRadius, borderTopStartRadius:Arg1.borderTopStartRadius, borderTopWidth:Arg1.borderTopWidth, borderWidth:Arg1.borderWidth, bottom:Arg1.bottom, children:Arg1.children, direction:(Arg1.direction == null ? undefined : $$toRE199574244[Arg1.direction]), end_:Arg1.end_, flex:Arg1.flex, flexBasis:Arg1.flexBasis, flexDirection:(Arg1.flexDirection == null ? undefined : $$toRE36507703[Arg1.flexDirection]), flexGrow:Arg1.flexGrow, flexShrink:Arg1.flexShrink, flexWrap:(Arg1.flexWrap == null ? undefined : $$toRE556547177[Arg1.flexWrap]), h:Arg1.h, justifyContent:(Arg1.justifyContent == null ? undefined : $$toRE815689974[Arg1.justifyContent]), left:Arg1.left, m:Arg1.m, maxH:Arg1.maxH, maxW:Arg1.maxW, mb:Arg1.mb, me:Arg1.me, mh:Arg1.mh, minH:Arg1.minH, minW:Arg1.minW, ml:Arg1.ml, mr:Arg1.mr, ms:Arg1.ms, mt:Arg1.mt, mv:Arg1.mv, opacity:Arg1.opacity, overflow:(Arg1.overflow == null ? undefined : $$toRE826265118[Arg1.overflow]), p:Arg1.p, pb:Arg1.pb, pe:Arg1.pe, ph:Arg1.ph, pl:Arg1.pl, position:(Arg1.position == null ? undefined : $$toRE373987755[Arg1.position]), pr:Arg1.pr, ps:Arg1.ps, pt:Arg1.pt, pv:Arg1.pv, right:Arg1.right, start:Arg1.start, style:Arg1.style, top:Arg1.top, w:Arg1.w, zIndex:Arg1.zIndex};
+  const $props = {alignContent:(Arg1.alignContent == null ? undefined : $$toRE866454557[Arg1.alignContent]), alignItems:(Arg1.alignItems == null ? undefined : $$toRE719148934[Arg1.alignItems]), alignSelf:(Arg1.alignSelf == null ? undefined : $$toRE541798403[Arg1.alignSelf]), aspectRatio:Arg1.aspectRatio, bg:Arg1.bg, borderBottomColor:Arg1.borderBottomColor, borderBottomEndRadius:Arg1.borderBottomEndRadius, borderBottomLeftRadius:Arg1.borderBottomLeftRadius, borderBottomRightRadius:Arg1.borderBottomRightRadius, borderBottomStartRadius:Arg1.borderBottomStartRadius, borderBottomWidth:Arg1.borderBottomWidth, borderColor:Arg1.borderColor, borderEndColor:Arg1.borderEndColor, borderEndWidth:Arg1.borderEndWidth, borderLeftColor:Arg1.borderLeftColor, borderLeftWidth:Arg1.borderLeftWidth, borderRadius:Arg1.borderRadius, borderRightColor:Arg1.borderRightColor, borderRightWidth:Arg1.borderRightWidth, borderStartColor:Arg1.borderStartColor, borderStartWidth:Arg1.borderStartWidth, borderTopColor:Arg1.borderTopColor, borderTopEndRadius:Arg1.borderTopEndRadius, borderTopLeftRadius:Arg1.borderTopLeftRadius, borderTopRightRadius:Arg1.borderTopRightRadius, borderTopStartRadius:Arg1.borderTopStartRadius, borderTopWidth:Arg1.borderTopWidth, borderWidth:Arg1.borderWidth, bottom:Arg1.bottom, children:Arg1.children, component:Arg1.component, direction:(Arg1.direction == null ? undefined : $$toRE199574244[Arg1.direction]), display:(Arg1.display == null ? undefined : $$toRE952213817[Arg1.display]), end_:Arg1.end_, flex:Arg1.flex, flexBasis:Arg1.flexBasis, flexDirection:(Arg1.flexDirection == null ? undefined : $$toRE36507703[Arg1.flexDirection]), flexGrow:Arg1.flexGrow, flexShrink:Arg1.flexShrink, flexWrap:(Arg1.flexWrap == null ? undefined : $$toRE556547177[Arg1.flexWrap]), h:Arg1.h, justifyContent:(Arg1.justifyContent == null ? undefined : $$toRE815689974[Arg1.justifyContent]), left:Arg1.left, m:Arg1.m, maxH:Arg1.maxH, maxW:Arg1.maxW, mb:Arg1.mb, me:Arg1.me, mh:Arg1.mh, minH:Arg1.minH, minW:Arg1.minW, ml:Arg1.ml, mr:Arg1.mr, ms:Arg1.ms, mt:Arg1.mt, mv:Arg1.mv, opacity:Arg1.opacity, overflow:(Arg1.overflow == null ? undefined : $$toRE826265118[Arg1.overflow]), p:Arg1.p, pb:Arg1.pb, pe:Arg1.pe, ph:Arg1.ph, pl:Arg1.pl, position:(Arg1.position == null ? undefined : $$toRE373987755[Arg1.position]), pr:Arg1.pr, ps:Arg1.ps, pt:Arg1.pt, pv:Arg1.pv, resW:Arg1.resW, right:Arg1.right, start:Arg1.start, style:Arg1.style, top:Arg1.top, w:Arg1.w, zIndex:Arg1.zIndex};
   const result = React.createElement(BoxBS.default, $props);
   return result
 };

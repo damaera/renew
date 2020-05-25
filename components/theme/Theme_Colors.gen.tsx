@@ -20,22 +20,34 @@ export type t = {
   readonly neutral900: string; 
   readonly primary: string; 
   readonly primaryLight: string; 
+  readonly primaryLighter: string; 
   readonly primaryDark: string; 
+  readonly primaryDarker: string; 
   readonly secondary: string; 
   readonly secondaryLight: string; 
+  readonly secondaryLighter: string; 
   readonly secondaryDark: string; 
+  readonly secondaryDarker: string; 
   readonly success: string; 
   readonly successLight: string; 
+  readonly successLighter: string; 
   readonly successDark: string; 
+  readonly successDarker: string; 
   readonly danger: string; 
   readonly dangerLight: string; 
+  readonly dangerLighter: string; 
   readonly dangerDark: string; 
+  readonly dangerDarker: string; 
   readonly info: string; 
   readonly infoLight: string; 
+  readonly infoLighter: string; 
   readonly infoDark: string; 
+  readonly infoDarker: string; 
   readonly warning: string; 
   readonly warningLight: string; 
-  readonly warningDark: string
+  readonly warningLighter: string; 
+  readonly warningDark: string; 
+  readonly warningDarker: string
 };
 
 export const light: t = Theme_ColorsBS.light;

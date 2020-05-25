@@ -1,6 +1,15 @@
 open ReactNative;
 
 let (>>=) = Belt.Option.flatMap;
+let (<$>) = Belt.Option.map;
+
+type resSizeT = {
+  xs: ReactNative.Style.size,
+  sm: ReactNative.Style.size,
+  md: ReactNative.Style.size,
+  lg: ReactNative.Style.size,
+  xl: ReactNative.Style.size,
+};
 
 [@react.component]
 let make =
@@ -52,6 +61,8 @@ let make =
       ~minW=?,
       ~minH=?,
       ~aspectRatio=?,
+      //
+      ~resW: option(resSizeT)=?,
       /* bg */
       ~bg=?,
       /* opacity */
@@ -88,111 +99,145 @@ let make =
       ~zIndex=?,
       /* direction */
       ~direction=?,
+      // display
+      ~display=?,
       /* rest */
       ~style=?,
       ~children=?,
+      ~component=<View />,
     ) => {
+  let theme = React.useContext(Theme.themeContext);
+  let breakpoints = theme.breakpoints;
+
+  let windowWidth = Responsive.useWindowWidth();
+
+  let screenSize =
+    switch (windowWidth) {
+    | a when a > breakpoints.xl => `xl
+    | a when a > breakpoints.lg => `lg
+    | a when a > breakpoints.md => `md
+    | a when a > breakpoints.sm => `sm
+    | _ => `xs
+    };
+  /* theme */
   let pt_ = pt;
 
+  // responsiveValue size
+  let resSizeV = (v: resSizeT) =>
+    switch (screenSize) {
+    | `xs => v.xs
+    | `sm => v.sm
+    | `md => v.md
+    | `lg => v.lg
+    | `xl => v.xl
+    };
+
+  // value
   let v = Style.viewStyle;
 
   let resolvedStyle =
     Style.arrayOption([|
       // flex
-      alignContent >>= (a => Some(v(~alignContent=a, ()))),
-      alignItems >>= (a => Some(v(~alignItems=a, ()))),
-      alignSelf >>= (a => Some(v(~alignSelf=a, ()))),
-      flex >>= (a => Some(v(~flex=a, ()))),
-      flexBasis >>= (a => Some(v(~flexBasis=a, ()))),
-      flexDirection >>= (a => Some(v(~flexDirection=a, ()))),
-      flexGrow >>= (a => Some(v(~flex=a, ()))),
-      flexShrink >>= (a => Some(v(~flexShrink=a, ()))),
-      flexWrap >>= (a => Some(v(~flexWrap=a, ()))),
-      justifyContent >>= (a => Some(v(~justifyContent=a, ()))),
+      alignContent <$> (a => v(~alignContent=a, ())),
+      alignItems <$> (a => v(~alignItems=a, ())),
+      alignSelf <$> (a => v(~alignSelf=a, ())),
+      flex <$> (a => v(~flex=a, ())),
+      flexBasis <$> (a => v(~flexBasis=a, ())),
+      flexDirection <$> (a => v(~flexDirection=a, ())),
+      flexGrow <$> (a => v(~flex=a, ())),
+      flexShrink <$> (a => v(~flexShrink=a, ())),
+      flexWrap <$> (a => v(~flexWrap=a, ())),
+      justifyContent <$> (a => v(~justifyContent=a, ())),
       // padding
-      p >>= (p => Some(v(~padding=p, ()))),
-      pt_ >>= (pt_ => Some(v(~paddingTop=pt_, ()))), //
-      pr >>= (pr => Some(v(~paddingRight=pr, ()))),
-      pb >>= (pb => Some(v(~paddingBottom=pb, ()))),
-      pl >>= (pl => Some(v(~paddingLeft=pl, ()))),
-      pv >>= (pv => Some(v(~paddingVertical=pv, ()))),
-      ph >>= (ph => Some(v(~paddingHorizontal=ph, ()))),
-      pe >>= (pe => Some(v(~paddingStart=pe, ()))),
-      ps >>= (ps => Some(v(~paddingEnd=ps, ()))),
+      p <$> (p => v(~padding=p, ())),
+      pt_ <$> (pt_ => v(~paddingTop=pt_, ())), // pt is
+      pr <$> (pr => v(~paddingRight=pr, ())),
+      pb <$> (pb => v(~paddingBottom=pb, ())),
+      pl <$> (pl => v(~paddingLeft=pl, ())),
+      pv <$> (pv => v(~paddingVertical=pv, ())),
+      ph <$> (ph => v(~paddingHorizontal=ph, ())),
+      pe <$> (pe => v(~paddingStart=pe, ())),
+      ps <$> (ps => v(~paddingEnd=ps, ())),
       // margin
-      m >>= (m => Some(v(~margin=m, ()))),
-      mt >>= (mt => Some(v(~marginTop=mt, ()))),
-      mr >>= (mr => Some(v(~marginRight=mr, ()))),
-      mb >>= (mb => Some(v(~marginBottom=mb, ()))),
-      ml >>= (ml => Some(v(~marginLeft=ml, ()))),
-      mv >>= (mv => Some(v(~marginVertical=mv, ()))),
-      mh >>= (mh => Some(v(~marginHorizontal=mh, ()))),
-      me >>= (me => Some(v(~marginStart=me, ()))),
-      ms >>= (ms => Some(v(~marginEnd=ms, ()))),
+      m <$> (m => v(~margin=m, ())),
+      mt <$> (mt => v(~marginTop=mt, ())),
+      mr <$> (mr => v(~marginRight=mr, ())),
+      mb <$> (mb => v(~marginBottom=mb, ())),
+      ml <$> (ml => v(~marginLeft=ml, ())),
+      mv <$> (mv => v(~marginVertical=mv, ())),
+      mh <$> (mh => v(~marginHorizontal=mh, ())),
+      me <$> (me => v(~marginStart=me, ())),
+      ms <$> (ms => v(~marginEnd=ms, ())),
       // size
-      w >>= (w => Some(v(~width=w, ()))),
-      h >>= (h => Some(v(~height=h, ()))),
-      maxW >>= (w => Some(v(~maxWidth=w, ()))),
-      maxH >>= (h => Some(v(~maxHeight=h, ()))),
-      minW >>= (w => Some(v(~minWidth=w, ()))),
-      minH >>= (h => Some(v(~minHeight=h, ()))),
-      aspectRatio >>= (a => Some(v(~aspectRatio=a, ()))),
+      w <$> (w => v(~width=w, ())),
+      h <$> (h => v(~height=h, ())),
+      maxW <$> (w => v(~maxWidth=w, ())),
+      maxH <$> (h => v(~maxHeight=h, ())),
+      minW <$> (w => v(~minWidth=w, ())),
+      minH <$> (h => v(~minHeight=h, ())),
+      aspectRatio <$> (a => v(~aspectRatio=a, ())),
+      //
+      resW <$> (w => v(~width=resSizeV(w), ())),
       // position
-      position >>= (p => Some(v(~position=p, ()))),
-      top >>= (t => Some(v(~top=t, ()))),
-      right >>= (r => Some(v(~right=r, ()))),
-      bottom >>= (b => Some(v(~bottom=b, ()))),
-      left >>= (l => Some(v(~left=l, ()))),
-      start >>= (s => Some(v(~start=s, ()))),
-      end_ >>= (e => Some(v(~_end=e, ()))),
+      position <$> (p => v(~position=p, ())),
+      top <$> (t => v(~top=t, ())),
+      right <$> (r => v(~right=r, ())),
+      bottom <$> (b => v(~bottom=b, ())),
+      left <$> (l => v(~left=l, ())),
+      start <$> (s => v(~start=s, ())),
+      end_ <$> (e => v(~_end=e, ())),
       // background
-      bg >>= (bg => Some(v(~backgroundColor=bg, ()))),
+      bg <$> (bg => v(~backgroundColor=bg, ())),
       // opacity
-      opacity >>= (o => Some(v(~opacity=o, ()))),
+      opacity <$> (o => v(~opacity=o, ())),
       // borderWidth
-      borderWidth >>= (b => Some(v(~borderWidth=b, ()))),
-      borderTopWidth >>= (b => Some(v(~borderTopWidth=b, ()))),
-      borderRightWidth >>= (b => Some(v(~borderRightWidth=b, ()))),
-      borderBottomWidth >>= (b => Some(v(~borderBottomWidth=b, ()))),
-      borderLeftWidth >>= (b => Some(v(~borderLeftWidth=b, ()))),
-      borderStartWidth >>= (b => Some(v(~borderStartWidth=b, ()))),
-      borderEndWidth >>= (b => Some(v(~borderEndWidth=b, ()))),
+      borderWidth <$> (b => v(~borderWidth=b, ())),
+      borderTopWidth <$> (b => v(~borderTopWidth=b, ())),
+      borderRightWidth <$> (b => v(~borderRightWidth=b, ())),
+      borderBottomWidth <$> (b => v(~borderBottomWidth=b, ())),
+      borderLeftWidth <$> (b => v(~borderLeftWidth=b, ())),
+      borderStartWidth <$> (b => v(~borderStartWidth=b, ())),
+      borderEndWidth <$> (b => v(~borderEndWidth=b, ())),
       // borderRadius
-      borderRadius >>= (b => Some(v(~borderRadius=b, ()))),
-      borderTopRightRadius >>= (b => Some(v(~borderTopRightRadius=b, ()))),
-      borderTopLeftRadius >>= (b => Some(v(~borderTopLeftRadius=b, ()))),
-      borderTopStartRadius >>= (b => Some(v(~borderTopStartRadius=b, ()))),
-      borderTopEndRadius >>= (b => Some(v(~borderTopEndRadius=b, ()))),
-      borderBottomRightRadius
-      >>= (b => Some(v(~borderBottomRightRadius=b, ()))),
-      borderBottomLeftRadius
-      >>= (b => Some(v(~borderBottomLeftRadius=b, ()))),
-      borderBottomStartRadius
-      >>= (b => Some(v(~borderBottomStartRadius=b, ()))),
-      borderBottomEndRadius >>= (b => Some(v(~borderBottomEndRadius=b, ()))),
+      borderRadius <$> (b => v(~borderRadius=b, ())),
+      borderTopRightRadius <$> (b => v(~borderTopRightRadius=b, ())),
+      borderTopLeftRadius <$> (b => v(~borderTopLeftRadius=b, ())),
+      borderTopStartRadius <$> (b => v(~borderTopStartRadius=b, ())),
+      borderTopEndRadius <$> (b => v(~borderTopEndRadius=b, ())),
+      borderBottomRightRadius <$> (b => v(~borderBottomRightRadius=b, ())),
+      borderBottomLeftRadius <$> (b => v(~borderBottomLeftRadius=b, ())),
+      borderBottomStartRadius <$> (b => v(~borderBottomStartRadius=b, ())),
+      borderBottomEndRadius <$> (b => v(~borderBottomEndRadius=b, ())),
       // borderColor
-      borderColor >>= (b => Some(v(~borderColor=b, ()))),
-      borderTopColor >>= (b => Some(v(~borderTopColor=b, ()))),
-      borderRightColor >>= (b => Some(v(~borderRightColor=b, ()))),
-      borderBottomColor >>= (b => Some(v(~borderBottomColor=b, ()))),
-      borderLeftColor >>= (b => Some(v(~borderLeftColor=b, ()))),
-      borderStartColor >>= (b => Some(v(~borderStartColor=b, ()))),
-      borderEndColor >>= (b => Some(v(~borderEndColor=b, ()))),
+      borderColor <$> (b => v(~borderColor=b, ())),
+      borderTopColor <$> (b => v(~borderTopColor=b, ())),
+      borderRightColor <$> (b => v(~borderRightColor=b, ())),
+      borderBottomColor <$> (b => v(~borderBottomColor=b, ())),
+      borderLeftColor <$> (b => v(~borderLeftColor=b, ())),
+      borderStartColor <$> (b => v(~borderStartColor=b, ())),
+      borderEndColor <$> (b => v(~borderEndColor=b, ())),
       // overflow
-      overflow >>= (o => Some(v(~overflow=o, ()))),
+      overflow <$> (o => v(~overflow=o, ())),
       // zIndex
-      zIndex >>= (z => Some(v(~zIndex=z, ()))),
+      zIndex <$> (z => v(~zIndex=z, ())),
       // direction
-      direction >>= (d => Some(v(~direction=d, ()))),
+      direction <$> (d => v(~direction=d, ())),
+      // display
+      display <$> (d => v(~display=d, ())),
       // rest
       style,
     |]);
-  <View style=resolvedStyle>
-    {switch (children) {
-     | Some(children) => children
-     | None => React.null
-     }}
-  </View>;
+  let reactChildren = {
+    switch (children) {
+    | Some(children) => [|children|]
+    | None => [||]
+    };
+  };
+  ReasonReact.cloneElement(
+    component,
+    ~props={"style": resolvedStyle},
+    reactChildren,
+  );
 };
 
 [@genType]

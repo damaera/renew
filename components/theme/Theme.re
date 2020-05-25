@@ -1,4 +1,5 @@
 type t = {
+  breakpoints: Theme_Breakpoints.t,
   colors: Theme_Colors.t,
   button: Button_Theme.t,
   text: Text_Theme.t,
@@ -7,6 +8,7 @@ type t = {
 
 [@genType]
 let defaultTheme: t = {
+  breakpoints: Theme_Breakpoints.defaultTheme,
   colors: Theme_Colors.light,
   button: Button_Theme.defaultTheme,
   text: Text_Theme.defaultTheme,

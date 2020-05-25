@@ -11,12 +11,15 @@ import {t as Button_Theme_t} from '../../components/button/Button_Theme.gen';
 
 import {t as Text_Theme_t} from '../../components/text/Text_Theme.gen';
 
+import {t as Theme_Breakpoints_t} from './Theme_Breakpoints.gen';
+
 import {t as Theme_Colors_t} from './Theme_Colors.gen';
 
 import {t as Theme_Space_t} from './Theme_Space.gen';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type t = {
+  readonly breakpoints: Theme_Breakpoints_t; 
   readonly colors: Theme_Colors_t; 
   readonly button: Button_Theme_t; 
   readonly text: Text_Theme_t; 
