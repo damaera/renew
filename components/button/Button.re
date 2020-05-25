@@ -33,6 +33,7 @@ let make =
       ~suffixElement=?,
       ~styleButton=?,
       ~styleText=?,
+      ~children=?,
     ) => {
   let theme = React.useContext(Theme.themeContext);
 
@@ -197,7 +198,12 @@ let make =
          <> <View> element </View> <Spacer x=spacerSize /> </>
        | None => React.null
        }}
-      <View> <UIText styleText=resolvedTextStyle value=text size /> </View>
+      <View>
+        {switch (children) {
+         | Some(children) => children
+         | None => <UIText styleText=resolvedTextStyle value=text size />
+         }}
+      </View>
       {switch (suffixElement) {
        | Some(element) =>
          <> <Spacer x=spacerSize /> <View> element </View> </>

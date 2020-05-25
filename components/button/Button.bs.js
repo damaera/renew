@@ -20,6 +20,7 @@ function Button(Props) {
   var suffixElement = Props.suffixElement;
   var styleButton = Props.styleButton;
   var styleText = Props.styleText;
+  var children = Props.children;
   var size = sizeOpt !== undefined ? sizeOpt : /* md */24407;
   var variant = variantOpt !== undefined ? variantOpt : /* solid */12956715;
   var color = colorOpt !== undefined ? colorOpt : /* neutral */-349573817;
@@ -210,11 +211,11 @@ function Button(Props) {
                             }), React.createElement(Spacer.make, {
                               x: spacerSize
                             })) : null, React.createElement(ReactNative.View, {
-                        children: React.createElement($$Text.make, {
-                              value: text,
-                              styleText: resolvedTextStyle,
-                              size: size
-                            })
+                        children: children !== undefined ? Caml_option.valFromOption(children) : React.createElement($$Text.make, {
+                                value: text,
+                                styleText: resolvedTextStyle,
+                                size: size
+                              })
                       }), suffixElement !== undefined ? React.createElement(React.Fragment, undefined, React.createElement(Spacer.make, {
                               x: spacerSize
                             }), React.createElement(ReactNative.View, {

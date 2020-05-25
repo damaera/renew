@@ -11,19 +11,19 @@ var defaultTheme_textColor = {
 };
 
 var defaultTheme_height = {
-  xs: 24,
-  sm: 32,
-  md: 40,
-  lg: 48,
-  xl: 56
+  xs: 21,
+  sm: 28,
+  md: 35,
+  lg: 42,
+  xl: 49
 };
 
 var defaultTheme_paddingHorizontal = {
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 24
+  xs: 7,
+  sm: 10.5,
+  md: 14,
+  lg: 17.5,
+  xl: 21
 };
 
 var defaultTheme = {

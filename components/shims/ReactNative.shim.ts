@@ -1,11 +1,7 @@
 import * as RN from "react-native";
 
-let rn = RN;
-
 // tslint:disable-next-line:max-classes-per-file
-export abstract class Style_t {
-  protected opaque: unknown;
-}
+export type Style_t = RN.ViewStyle;
 
 // tslint:disable-next-line:max-classes-per-file
 export abstract class Style_size {

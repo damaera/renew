@@ -33,6 +33,7 @@ export type variantT = "solid" | "ghost" | "outline" | "light";
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
+  readonly children?: React.ReactNode; 
   readonly color?: variantColorT; 
   readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
@@ -44,6 +45,7 @@ export type Props = {
 };
 
 export const $$default: React.ComponentType<{
+  readonly children?: React.ReactNode; 
   readonly color?: variantColorT; 
   readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
@@ -53,7 +55,7 @@ export const $$default: React.ComponentType<{
   readonly text: string; 
   readonly variant?: variantT
 }> = function Button(Arg1: any) {
-  const $props = {color:(Arg1.color == null ? undefined : $$toRE808406435[Arg1.color]), prefixElement:Arg1.prefixElement, size:(Arg1.size == null ? undefined : $$toRE981135708[Arg1.size]), styleButton:Arg1.styleButton, styleText:Arg1.styleText, suffixElement:Arg1.suffixElement, text:Arg1.text, variant:(Arg1.variant == null ? undefined : $$toRE266350424[Arg1.variant])};
+  const $props = {children:Arg1.children, color:(Arg1.color == null ? undefined : $$toRE808406435[Arg1.color]), prefixElement:Arg1.prefixElement, size:(Arg1.size == null ? undefined : $$toRE981135708[Arg1.size]), styleButton:Arg1.styleButton, styleText:Arg1.styleText, suffixElement:Arg1.suffixElement, text:Arg1.text, variant:(Arg1.variant == null ? undefined : $$toRE266350424[Arg1.variant])};
   const result = React.createElement(ButtonBS.default, $props);
   return result
 };

@@ -1,19 +1,12 @@
 import * as React from "react";
 import { View } from "react-native";
-import Button from "../../components/button/Button.gen";
-import Spacer from "../../components/spacer/Spacer.gen";
+import { Box, Button, Spacer } from "../../components/";
 
 export default () => {
   return (
     <>
       <Spacer />
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Box flexDirection="row" justifyContent="center" alignItems="center">
         <Button text="Hello world" size="xs" />
         <Spacer x={8} />
         <Button text="Hello world" size="sm" />
@@ -23,7 +16,7 @@ export default () => {
         <Button text="Hello world" size="lg" />
         <Spacer x={8} />
         <Button text="Hello world" size="xl" />
-      </View>
+      </Box>
       <Spacer />
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <Button text="Solid button" variant="solid" />
