@@ -29,13 +29,13 @@ export default () => {
       </View>
       <Spacer />
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
-        <Button text="Solid button" color="primary" variant="solid" />
+        <Button text="Solid button" color="danger" variant="solid" />
         <Spacer x={8} />
-        <Button text="Outline button" color="primary" variant="outline" />
+        <Button text="Outline button" color="danger" variant="outline" />
         <Spacer x={8} />
-        <Button text="Light button" color="primary" variant="light" />
+        <Button text="Light button" color="danger" variant="light" />
         <Spacer x={8} />
-        <Button text="Ghost button" color="primary" variant="ghost" />
+        <Button text="Ghost button" color="danger" variant="ghost" />
       </View>
       <Spacer />
       <View

@@ -35,7 +35,7 @@ let make =
       ~styleText=?,
       ~children=?,
     ) => {
-  let theme = React.useContext(Theme.themeContext);
+  let theme = Theme.useTheme();
 
   let (isHover, setHover) = React.useState(() => false);
 

@@ -1,6 +1,6 @@
 [@react.component]
 let make = (~value, ~styleText=?, ~size=`md) => {
-  let theme = React.useContext(Theme.themeContext);
+  let theme = Theme.useTheme();
 
   let fontSize =
     switch (size) {

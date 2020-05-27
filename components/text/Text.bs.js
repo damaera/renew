@@ -10,7 +10,7 @@ function $$Text(Props) {
   var styleText = Props.styleText;
   var sizeOpt = Props.size;
   var size = sizeOpt !== undefined ? sizeOpt : /* md */24407;
-  var theme = React.useContext(Theme.themeContext);
+  var theme = Theme.useTheme(undefined);
   var fontSize = size >= 1056022183 ? (
       size !== 1056071912 ? (
           size >= 1056171370 ? (

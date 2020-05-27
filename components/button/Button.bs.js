@@ -24,7 +24,7 @@ function Button(Props) {
   var size = sizeOpt !== undefined ? sizeOpt : /* md */24407;
   var variant = variantOpt !== undefined ? variantOpt : /* solid */12956715;
   var color = colorOpt !== undefined ? colorOpt : /* neutral */-349573817;
-  var theme = React.useContext(Theme.themeContext);
+  var theme = Theme.useTheme(undefined);
   var match = React.useState((function () {
           return false;
         }));

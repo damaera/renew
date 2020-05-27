@@ -86,7 +86,7 @@ function Box(Props) {
   var children = Props.children;
   var componentOpt = Props.component;
   var component = componentOpt !== undefined ? Caml_option.valFromOption(componentOpt) : React.createElement(ReactNative.View, { });
-  var theme = React.useContext(Theme.themeContext);
+  var theme = Theme.useTheme(undefined);
   var breakpoints = theme.breakpoints;
   var windowWidth = Responsive.useWindowWidth(undefined);
   var screenSize = windowWidth > breakpoints.xl ? /* xl */26868 : (

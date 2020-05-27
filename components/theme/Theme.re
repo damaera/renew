@@ -25,4 +25,10 @@ let makeProps = (~value: t=defaultTheme, ~children, ()) => {
 let make = React.Context.provider(themeContext);
 
 [@genType]
+let useTheme = () => {
+  let theme = React.useContext(themeContext);
+  theme;
+};
+
+[@genType]
 let default = make;

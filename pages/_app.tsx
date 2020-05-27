@@ -1,11 +1,13 @@
 import { AppProps } from "next/app";
-import Theme, { defaultTheme } from "../components/theme/Theme.gen";
+import { defaultTheme, ThemeProvider, useTheme } from "../components/";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  let theme = useTheme();
+
   return (
-    <Theme value={defaultTheme}>
+    <ThemeProvider value={defaultTheme}>
       <Component {...pageProps} />
-    </Theme>
+    </ThemeProvider>
   );
 }
 

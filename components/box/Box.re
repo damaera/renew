@@ -106,7 +106,7 @@ let make =
       ~children=?,
       ~component=<View />,
     ) => {
-  let theme = React.useContext(Theme.themeContext);
+  let theme = Theme.useTheme();
   let breakpoints = theme.breakpoints;
 
   let windowWidth = Responsive.useWindowWidth();

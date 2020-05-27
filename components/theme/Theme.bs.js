@@ -28,12 +28,17 @@ function makeProps(valueOpt, children, param) {
 
 var make = themeContext.Provider;
 
+function useTheme(param) {
+  return React.useContext(themeContext);
+}
+
 var $$default = make;
 
 exports.defaultTheme = defaultTheme;
 exports.themeContext = themeContext;
 exports.makeProps = makeProps;
 exports.make = make;
+exports.useTheme = useTheme;
 exports.$$default = $$default;
 exports.default = $$default;
 exports.__esModule = true;

@@ -28,6 +28,8 @@ export type t = {
 
 export const defaultTheme: t = ThemeBS.defaultTheme;
 
+export const useTheme: () => t = ThemeBS.useTheme;
+
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = { readonly children: React.ReactNode; readonly value: t };
 
