@@ -1,5 +1,5 @@
 {
-  "name": "with-react-native-web",
+  "name": "@damaera/renew",
   "scripts": {
     "next-dev": "next",
     "next-build": "next build",
