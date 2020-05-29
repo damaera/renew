@@ -1,5 +1,6 @@
 {
   "name": "@damaera/renew",
+  "version": "0.0.1",
   "scripts": {
     "next-dev": "next",
     "next-build": "next build",
