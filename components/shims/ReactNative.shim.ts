@@ -1,19 +1,12 @@
 import * as RN from "react-native";
 
-// tslint:disable-next-line:max-classes-per-file
 export type Style_t = RN.ViewStyle;
 
-// tslint:disable-next-line:max-classes-per-file
-export abstract class Style_size {
-  protected opaque: unknown;
-}
+export type Style_size = number | string;
 
-// tslint:disable-next-line:max-classes-per-file
-export abstract class Style_margin {
-  protected opaque: unknown;
-}
+export type Style_margin = number | string;
+export type Style_offset = number | string;
 
-// tslint:disable-next-line:max-classes-per-file
-export abstract class Color_t {
-  protected opaque: unknown;
-}
+export type Color_t = string;
+
+export type FontVariant_t = RN.FontVariant;

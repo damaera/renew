@@ -18,8 +18,8 @@ function Button(Props) {
   var colorOpt = Props.color;
   var prefixElement = Props.prefixElement;
   var suffixElement = Props.suffixElement;
-  var styleButton = Props.styleButton;
-  var styleText = Props.styleText;
+  var style = Props.style;
+  var textStyle = Props.textStyle;
   var children = Props.children;
   var size = sizeOpt !== undefined ? sizeOpt : /* md */24407;
   var variant = variantOpt !== undefined ? variantOpt : /* solid */12956715;
@@ -125,52 +125,10 @@ function Button(Props) {
     ) : (
       variant >= -184774442 ? color$1.lighter : color$1.dark
     );
-  var resolvedStyle = [styleButton];
+  var resolvedStyle = [style];
   var resolvedTextStyle = [
-    {
-      fontWeight: (function () {
-            switch (theme.button.fontWeight) {
-              case 812216871 :
-                  return "normal";
-              case -1055161979 :
-                  return "bold";
-              case 1055956338 :
-                  return "100";
-              case 1056006067 :
-                  return "200";
-              case 1056055796 :
-                  return "300";
-              case 1056105525 :
-                  return "400";
-              case 1056155254 :
-                  return "500";
-              case 1056204983 :
-                  return "600";
-              case 1056254712 :
-                  return "700";
-              case 1056304441 :
-                  return "800";
-              case 1056354170 :
-                  return "900";
-              
-            }
-          })(),
-      textTransform: (function () {
-            switch (theme.button.textTransform) {
-              case -922086728 :
-                  return "none";
-              case -415330030 :
-                  return "uppercase";
-              case -425349839 :
-                  return "lowercase";
-              case -509867604 :
-                  return "capitalize";
-              
-            }
-          })()
-    },
     Caml_option.some(typeStyleText),
-    styleText
+    textStyle
   ];
   var spacerSize = size !== 24407 ? (
       size >= 26868 ? (
@@ -213,8 +171,10 @@ function Button(Props) {
                             })) : null, React.createElement(ReactNative.View, {
                         children: children !== undefined ? Caml_option.valFromOption(children) : React.createElement($$Text.make, {
                                 value: text,
-                                styleText: resolvedTextStyle,
-                                size: size
+                                style: resolvedTextStyle,
+                                size: size,
+                                fontWeight: theme.button.fontWeight,
+                                textTransform: theme.button.textTransform
                               })
                       }), suffixElement !== undefined ? React.createElement(React.Fragment, undefined, React.createElement(Spacer.make, {
                               x: spacerSize

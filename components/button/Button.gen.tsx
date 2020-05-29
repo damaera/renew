@@ -37,10 +37,10 @@ export type Props = {
   readonly color?: variantColorT; 
   readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
-  readonly styleButton?: ReactNative_Style_t; 
-  readonly styleText?: ReactNative_Style_t; 
+  readonly style?: ReactNative_Style_t; 
   readonly suffixElement?: JSX.Element; 
   readonly text: string; 
+  readonly textStyle?: ReactNative_Style_t; 
   readonly variant?: variantT
 };
 
@@ -49,13 +49,13 @@ export const $$default: React.ComponentType<{
   readonly color?: variantColorT; 
   readonly prefixElement?: JSX.Element; 
   readonly size?: sizeT; 
-  readonly styleButton?: ReactNative_Style_t; 
-  readonly styleText?: ReactNative_Style_t; 
+  readonly style?: ReactNative_Style_t; 
   readonly suffixElement?: JSX.Element; 
   readonly text: string; 
+  readonly textStyle?: ReactNative_Style_t; 
   readonly variant?: variantT
 }> = function Button(Arg1: any) {
-  const $props = {children:Arg1.children, color:(Arg1.color == null ? undefined : $$toRE808406435[Arg1.color]), prefixElement:Arg1.prefixElement, size:(Arg1.size == null ? undefined : $$toRE981135708[Arg1.size]), styleButton:Arg1.styleButton, styleText:Arg1.styleText, suffixElement:Arg1.suffixElement, text:Arg1.text, variant:(Arg1.variant == null ? undefined : $$toRE266350424[Arg1.variant])};
+  const $props = {children:Arg1.children, color:(Arg1.color == null ? undefined : $$toRE808406435[Arg1.color]), prefixElement:Arg1.prefixElement, size:(Arg1.size == null ? undefined : $$toRE981135708[Arg1.size]), style:Arg1.style, suffixElement:Arg1.suffixElement, text:Arg1.text, textStyle:Arg1.textStyle, variant:(Arg1.variant == null ? undefined : $$toRE266350424[Arg1.variant])};
   const result = React.createElement(ButtonBS.default, $props);
   return result
 };

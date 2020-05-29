@@ -31,11 +31,14 @@ let make =
       ~color: variantColorT=`neutral,
       ~prefixElement=?,
       ~suffixElement=?,
-      ~styleButton=?,
-      ~styleText=?,
+      ~style=?,
+      ~textStyle=?,
       ~children=?,
     ) => {
   let theme = Theme.useTheme();
+
+  let styleButton = style;
+  let styleText = textStyle;
 
   let (isHover, setHover) = React.useState(() => false);
 
@@ -121,14 +124,12 @@ let make =
   };
 
   let typeStyleText =
-    Style.(
-      switch (variant) {
-      | `solid => textStyle(~color=theme.button.textColor.solid, ())
-      | `outline => textStyle(~color=color.dark, ())
-      | `ghost => textStyle(~color=color.normal, ())
-      | `light => textStyle(~color=color.darker, ())
-      }
-    );
+    switch (variant) {
+    | `solid => Style.textStyle(~color=theme.button.textColor.solid, ())
+    | `outline => Style.textStyle(~color=color.dark, ())
+    | `ghost => Style.textStyle(~color=color.normal, ())
+    | `light => Style.textStyle(~color=color.darker, ())
+    };
 
   let bg =
     switch (variant) {
@@ -148,19 +149,7 @@ let make =
   let resolvedStyle = Style.(arrayOption([|styleButton|]));
 
   let resolvedTextStyle =
-    Style.(
-      arrayOption([|
-        Some(
-          textStyle(
-            ~fontWeight=theme.button.fontWeight,
-            ~textTransform=theme.button.textTransform,
-            (),
-          ),
-        ),
-        Some(typeStyleText),
-        styleText,
-      |])
-    );
+    Style.(arrayOption([|Some(typeStyleText), styleText|]));
 
   let spacerSize =
     switch (size) {
@@ -201,7 +190,14 @@ let make =
       <View>
         {switch (children) {
          | Some(children) => children
-         | None => <UIText styleText=resolvedTextStyle value=text size />
+         | None =>
+           <UIText
+             style=resolvedTextStyle
+             fontWeight={theme.button.fontWeight}
+             textTransform={theme.button.textTransform}
+             value=text
+             size
+           />
          }}
       </View>
       {switch (suffixElement) {

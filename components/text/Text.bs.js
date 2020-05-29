@@ -3,15 +3,41 @@
 
 var Theme = require("../theme/Theme.bs.js");
 var React = require("react");
+var $$Option = require("../Option.bs.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
+var Caml_splice_call = require("bs-platform/lib/js/caml_splice_call.js");
 
 function $$Text(Props) {
-  var value = Props.value;
-  var styleText = Props.styleText;
+  var componentOpt = Props.component;
+  var children = Props.children;
+  var valueOpt = Props.value;
+  var style = Props.style;
   var sizeOpt = Props.size;
+  var textShadowOffset = Props.textShadowOffset;
+  var color = Props.color;
+  var fontSize = Props.fontSize;
+  var fontStyle = Props.fontStyle;
+  var fontWeight = Props.fontWeight;
+  var lineHeight = Props.lineHeight;
+  var textAlign = Props.textAlign;
+  var textDecorationLine = Props.textDecorationLine;
+  var textShadowColor = Props.textShadowColor;
+  var fontFamily = Props.fontFamily;
+  var textShadowRadius = Props.textShadowRadius;
+  var includeFontPadding = Props.includeFontPadding;
+  var textAlignVertical = Props.textAlignVertical;
+  var fontVariant = Props.fontVariant;
+  var letterSpacing = Props.letterSpacing;
+  var textDecorationColor = Props.textDecorationColor;
+  var textDecorationStyle = Props.textDecorationStyle;
+  var textTransform = Props.textTransform;
+  var writingDirection = Props.writingDirection;
+  var component = componentOpt !== undefined ? Caml_option.valFromOption(componentOpt) : React.createElement(ReactNative.Text, { });
+  var value = valueOpt !== undefined ? valueOpt : "";
   var size = sizeOpt !== undefined ? sizeOpt : /* md */24407;
   var theme = Theme.useTheme(undefined);
-  var fontSize = size >= 1056022183 ? (
+  var themeFontSize = size >= 1056022183 ? (
       size !== 1056071912 ? (
           size >= 1056171370 ? (
               size >= 1056221099 ? theme.text.fontSize._6xl : theme.text.fontSize._5xl
@@ -28,17 +54,618 @@ function $$Text(Props) {
             )
         ) : theme.text.fontSize.md
     );
+  var t = function (prim, prim$1, prim$2, prim$3, prim$4, prim$5, prim$6, prim$7, prim$8, prim$9, prim$10, prim$11, prim$12, prim$13, prim$14, prim$15, prim$16, prim$17, prim$18, prim$19, prim$20, prim$21, prim$22, prim$23, prim$24, prim$25, prim$26, prim$27, prim$28, prim$29, prim$30, prim$31, prim$32, prim$33, prim$34, prim$35, prim$36, prim$37, prim$38, prim$39, prim$40, prim$41, prim$42, prim$43, prim$44, prim$45, prim$46, prim$47, prim$48, prim$49, prim$50, prim$51, prim$52, prim$53, prim$54, prim$55, prim$56, prim$57, prim$58, prim$59, prim$60, prim$61, prim$62, prim$63, prim$64, prim$65, prim$66, prim$67, prim$68, prim$69, prim$70, prim$71, prim$72, prim$73, prim$74, prim$75, prim$76, prim$77, prim$78, prim$79, prim$80, prim$81, prim$82, prim$83, prim$84, prim$85, prim$86, prim$87, prim$88, prim$89, prim$90, prim$91, prim$92, prim$93, prim$94, prim$95, prim$96, prim$97, prim$98) {
+    var tmp = { };
+    if (prim !== undefined) {
+      tmp.color = Caml_option.valFromOption(prim);
+    }
+    if (prim$1 !== undefined) {
+      tmp.fontFamily = Caml_option.valFromOption(prim$1);
+    }
+    if (prim$2 !== undefined) {
+      tmp.fontSize = Caml_option.valFromOption(prim$2);
+    }
+    if (prim$3 !== undefined) {
+      tmp.fontStyle = (function () {
+            switch (Caml_option.valFromOption(prim$3)) {
+              case 812216871 :
+                  return "normal";
+              case 107228912 :
+                  return "italic";
+              
+            }
+          })();
+    }
+    if (prim$4 !== undefined) {
+      tmp.fontVariant = Caml_option.valFromOption(prim$4);
+    }
+    if (prim$5 !== undefined) {
+      tmp.fontWeight = (function () {
+            switch (Caml_option.valFromOption(prim$5)) {
+              case 812216871 :
+                  return "normal";
+              case -1055161979 :
+                  return "bold";
+              case 1055956338 :
+                  return "100";
+              case 1056006067 :
+                  return "200";
+              case 1056055796 :
+                  return "300";
+              case 1056105525 :
+                  return "400";
+              case 1056155254 :
+                  return "500";
+              case 1056204983 :
+                  return "600";
+              case 1056254712 :
+                  return "700";
+              case 1056304441 :
+                  return "800";
+              case 1056354170 :
+                  return "900";
+              
+            }
+          })();
+    }
+    if (prim$6 !== undefined) {
+      tmp.includeFontPadding = Caml_option.valFromOption(prim$6);
+    }
+    if (prim$7 !== undefined) {
+      tmp.letterSpacing = Caml_option.valFromOption(prim$7);
+    }
+    if (prim$8 !== undefined) {
+      tmp.lineHeight = Caml_option.valFromOption(prim$8);
+    }
+    if (prim$9 !== undefined) {
+      tmp.textAlign = (function () {
+            switch (Caml_option.valFromOption(prim$9)) {
+              case -1065951377 :
+                  return "auto";
+              case -944764921 :
+                  return "left";
+              case -379319332 :
+                  return "right";
+              case 98248149 :
+                  return "center";
+              case 62250832 :
+                  return "justify";
+              
+            }
+          })();
+    }
+    if (prim$10 !== undefined) {
+      tmp.textAlignVertical = (function () {
+            switch (Caml_option.valFromOption(prim$10)) {
+              case -1065951377 :
+                  return "auto";
+              case 5793429 :
+                  return "top";
+              case -445061397 :
+                  return "bottom";
+              case 98248149 :
+                  return "center";
+              
+            }
+          })();
+    }
+    if (prim$11 !== undefined) {
+      tmp.textDecorationColor = Caml_option.valFromOption(prim$11);
+    }
+    if (prim$12 !== undefined) {
+      tmp.textDecorationLine = (function () {
+            switch (Caml_option.valFromOption(prim$12)) {
+              case -922086728 :
+                  return "none";
+              case 131142924 :
+                  return "underline";
+              case 412155569 :
+                  return "line-through";
+              case 495568133 :
+                  return "underline line-through";
+              
+            }
+          })();
+    }
+    if (prim$13 !== undefined) {
+      tmp.textDecorationStyle = (function () {
+            switch (Caml_option.valFromOption(prim$13)) {
+              case 12956715 :
+                  return "solid";
+              case 852175633 :
+                  return "double";
+              case 841979626 :
+                  return "dotted";
+              case 568403505 :
+                  return "dashed";
+              
+            }
+          })();
+    }
+    if (prim$14 !== undefined) {
+      tmp.textShadowColor = Caml_option.valFromOption(prim$14);
+    }
+    if (prim$15 !== undefined) {
+      tmp.textShadowOffset = Caml_option.valFromOption(prim$15);
+    }
+    if (prim$16 !== undefined) {
+      tmp.textShadowRadius = Caml_option.valFromOption(prim$16);
+    }
+    if (prim$17 !== undefined) {
+      tmp.textTransform = (function () {
+            switch (Caml_option.valFromOption(prim$17)) {
+              case -922086728 :
+                  return "none";
+              case -415330030 :
+                  return "uppercase";
+              case -425349839 :
+                  return "lowercase";
+              case -509867604 :
+                  return "capitalize";
+              
+            }
+          })();
+    }
+    if (prim$18 !== undefined) {
+      tmp.writingDirection = (function () {
+            switch (Caml_option.valFromOption(prim$18)) {
+              case -1065951377 :
+                  return "auto";
+              case 5396714 :
+                  return "ltr";
+              case 5695082 :
+                  return "rtl";
+              
+            }
+          })();
+    }
+    if (prim$19 !== undefined) {
+      tmp.backfaceVisibility = (function () {
+            switch (Caml_option.valFromOption(prim$19)) {
+              case 589592690 :
+                  return "visible";
+              case -862584982 :
+                  return "hidden";
+              
+            }
+          })();
+    }
+    if (prim$20 !== undefined) {
+      tmp.backgroundColor = Caml_option.valFromOption(prim$20);
+    }
+    if (prim$21 !== undefined) {
+      tmp.borderBottomColor = Caml_option.valFromOption(prim$21);
+    }
+    if (prim$22 !== undefined) {
+      tmp.borderBottomEndRadius = Caml_option.valFromOption(prim$22);
+    }
+    if (prim$23 !== undefined) {
+      tmp.borderBottomLeftRadius = Caml_option.valFromOption(prim$23);
+    }
+    if (prim$24 !== undefined) {
+      tmp.borderBottomRightRadius = Caml_option.valFromOption(prim$24);
+    }
+    if (prim$25 !== undefined) {
+      tmp.borderBottomStartRadius = Caml_option.valFromOption(prim$25);
+    }
+    if (prim$26 !== undefined) {
+      tmp.borderBottomWidth = Caml_option.valFromOption(prim$26);
+    }
+    if (prim$27 !== undefined) {
+      tmp.borderColor = Caml_option.valFromOption(prim$27);
+    }
+    if (prim$28 !== undefined) {
+      tmp.borderEndColor = Caml_option.valFromOption(prim$28);
+    }
+    if (prim$29 !== undefined) {
+      tmp.borderEndWidth = Caml_option.valFromOption(prim$29);
+    }
+    if (prim$30 !== undefined) {
+      tmp.borderLeftColor = Caml_option.valFromOption(prim$30);
+    }
+    if (prim$31 !== undefined) {
+      tmp.borderLeftWidth = Caml_option.valFromOption(prim$31);
+    }
+    if (prim$32 !== undefined) {
+      tmp.borderRadius = Caml_option.valFromOption(prim$32);
+    }
+    if (prim$33 !== undefined) {
+      tmp.borderRightColor = Caml_option.valFromOption(prim$33);
+    }
+    if (prim$34 !== undefined) {
+      tmp.borderRightWidth = Caml_option.valFromOption(prim$34);
+    }
+    if (prim$35 !== undefined) {
+      tmp.borderStartColor = Caml_option.valFromOption(prim$35);
+    }
+    if (prim$36 !== undefined) {
+      tmp.borderStartWidth = Caml_option.valFromOption(prim$36);
+    }
+    if (prim$37 !== undefined) {
+      tmp.borderStyle = (function () {
+            switch (Caml_option.valFromOption(prim$37)) {
+              case 12956715 :
+                  return "solid";
+              case 841979626 :
+                  return "dotted";
+              case 568403505 :
+                  return "dashed";
+              
+            }
+          })();
+    }
+    if (prim$38 !== undefined) {
+      tmp.borderTopColor = Caml_option.valFromOption(prim$38);
+    }
+    if (prim$39 !== undefined) {
+      tmp.borderTopEndRadius = Caml_option.valFromOption(prim$39);
+    }
+    if (prim$40 !== undefined) {
+      tmp.borderTopLeftRadius = Caml_option.valFromOption(prim$40);
+    }
+    if (prim$41 !== undefined) {
+      tmp.borderTopRightRadius = Caml_option.valFromOption(prim$41);
+    }
+    if (prim$42 !== undefined) {
+      tmp.borderTopStartRadius = Caml_option.valFromOption(prim$42);
+    }
+    if (prim$43 !== undefined) {
+      tmp.borderTopWidth = Caml_option.valFromOption(prim$43);
+    }
+    if (prim$44 !== undefined) {
+      tmp.borderWidth = Caml_option.valFromOption(prim$44);
+    }
+    if (prim$45 !== undefined) {
+      tmp.elevation = Caml_option.valFromOption(prim$45);
+    }
+    if (prim$46 !== undefined) {
+      tmp.opacity = Caml_option.valFromOption(prim$46);
+    }
+    if (prim$47 !== undefined) {
+      tmp.transform = Caml_option.valFromOption(prim$47);
+    }
+    if (prim$48 !== undefined) {
+      tmp.shadowColor = Caml_option.valFromOption(prim$48);
+    }
+    if (prim$49 !== undefined) {
+      tmp.shadowOffset = Caml_option.valFromOption(prim$49);
+    }
+    if (prim$50 !== undefined) {
+      tmp.shadowOpacity = Caml_option.valFromOption(prim$50);
+    }
+    if (prim$51 !== undefined) {
+      tmp.shadowRadius = Caml_option.valFromOption(prim$51);
+    }
+    if (prim$52 !== undefined) {
+      tmp.alignContent = (function () {
+            switch (Caml_option.valFromOption(prim$52)) {
+              case 662439529 :
+                  return "flex-start";
+              case 924268066 :
+                  return "flex-end";
+              case 98248149 :
+                  return "center";
+              case -162316795 :
+                  return "stretch";
+              case -485895757 :
+                  return "space-around";
+              case 516682146 :
+                  return "space-between";
+              
+            }
+          })();
+    }
+    if (prim$53 !== undefined) {
+      tmp.alignItems = (function () {
+            switch (Caml_option.valFromOption(prim$53)) {
+              case 662439529 :
+                  return "flex-start";
+              case 924268066 :
+                  return "flex-end";
+              case 98248149 :
+                  return "center";
+              case -162316795 :
+                  return "stretch";
+              case 287825029 :
+                  return "baseline";
+              
+            }
+          })();
+    }
+    if (prim$54 !== undefined) {
+      tmp.alignSelf = (function () {
+            switch (Caml_option.valFromOption(prim$54)) {
+              case -1065951377 :
+                  return "auto";
+              case 662439529 :
+                  return "flex-start";
+              case 924268066 :
+                  return "flex-end";
+              case 98248149 :
+                  return "center";
+              case -162316795 :
+                  return "stretch";
+              case 287825029 :
+                  return "baseline";
+              
+            }
+          })();
+    }
+    if (prim$55 !== undefined) {
+      tmp.aspectRatio = Caml_option.valFromOption(prim$55);
+    }
+    if (prim$56 !== undefined) {
+      tmp.bottom = Caml_option.valFromOption(prim$56);
+    }
+    if (prim$57 !== undefined) {
+      tmp.direction = (function () {
+            switch (Caml_option.valFromOption(prim$57)) {
+              case -601204732 :
+                  return "inherit";
+              case 5396714 :
+                  return "ltr";
+              case 5695082 :
+                  return "rtl";
+              
+            }
+          })();
+    }
+    if (prim$58 !== undefined) {
+      tmp.display = (function () {
+            switch (Caml_option.valFromOption(prim$58)) {
+              case -922086728 :
+                  return "none";
+              case -1010954439 :
+                  return "flex";
+              
+            }
+          })();
+    }
+    if (prim$59 !== undefined) {
+      tmp.end = Caml_option.valFromOption(prim$59);
+    }
+    if (prim$60 !== undefined) {
+      tmp.flex = Caml_option.valFromOption(prim$60);
+    }
+    if (prim$61 !== undefined) {
+      tmp.flexBasis = Caml_option.valFromOption(prim$61);
+    }
+    if (prim$62 !== undefined) {
+      tmp.flexDirection = (function () {
+            switch (Caml_option.valFromOption(prim$62)) {
+              case 5693978 :
+                  return "row";
+              case 378951208 :
+                  return "row-reverse";
+              case -963948842 :
+                  return "column";
+              case 135477484 :
+                  return "column-reverse";
+              
+            }
+          })();
+    }
+    if (prim$63 !== undefined) {
+      tmp.flexGrow = Caml_option.valFromOption(prim$63);
+    }
+    if (prim$64 !== undefined) {
+      tmp.flexShrink = Caml_option.valFromOption(prim$64);
+    }
+    if (prim$65 !== undefined) {
+      tmp.flexWrap = (function () {
+            switch (Caml_option.valFromOption(prim$65)) {
+              case -822134326 :
+                  return "wrap";
+              case 867913355 :
+                  return "nowrap";
+              
+            }
+          })();
+    }
+    if (prim$66 !== undefined) {
+      tmp.height = Caml_option.valFromOption(prim$66);
+    }
+    if (prim$67 !== undefined) {
+      tmp.justifyContent = (function () {
+            switch (Caml_option.valFromOption(prim$67)) {
+              case 662439529 :
+                  return "flex-start";
+              case 924268066 :
+                  return "flex-end";
+              case 98248149 :
+                  return "center";
+              case -485895757 :
+                  return "space-around";
+              case 516682146 :
+                  return "space-between";
+              case -1016061555 :
+                  return "space-evenly";
+              
+            }
+          })();
+    }
+    if (prim$68 !== undefined) {
+      tmp.left = Caml_option.valFromOption(prim$68);
+    }
+    if (prim$69 !== undefined) {
+      tmp.margin = Caml_option.valFromOption(prim$69);
+    }
+    if (prim$70 !== undefined) {
+      tmp.marginBottom = Caml_option.valFromOption(prim$70);
+    }
+    if (prim$71 !== undefined) {
+      tmp.marginEnd = Caml_option.valFromOption(prim$71);
+    }
+    if (prim$72 !== undefined) {
+      tmp.marginHorizontal = Caml_option.valFromOption(prim$72);
+    }
+    if (prim$73 !== undefined) {
+      tmp.marginLeft = Caml_option.valFromOption(prim$73);
+    }
+    if (prim$74 !== undefined) {
+      tmp.marginRight = Caml_option.valFromOption(prim$74);
+    }
+    if (prim$75 !== undefined) {
+      tmp.marginStart = Caml_option.valFromOption(prim$75);
+    }
+    if (prim$76 !== undefined) {
+      tmp.marginTop = Caml_option.valFromOption(prim$76);
+    }
+    if (prim$77 !== undefined) {
+      tmp.marginVertical = Caml_option.valFromOption(prim$77);
+    }
+    if (prim$78 !== undefined) {
+      tmp.maxHeight = Caml_option.valFromOption(prim$78);
+    }
+    if (prim$79 !== undefined) {
+      tmp.maxWidth = Caml_option.valFromOption(prim$79);
+    }
+    if (prim$80 !== undefined) {
+      tmp.minHeight = Caml_option.valFromOption(prim$80);
+    }
+    if (prim$81 !== undefined) {
+      tmp.minWidth = Caml_option.valFromOption(prim$81);
+    }
+    if (prim$82 !== undefined) {
+      tmp.overflow = (function () {
+            switch (Caml_option.valFromOption(prim$82)) {
+              case 589592690 :
+                  return "visible";
+              case -862584982 :
+                  return "hidden";
+              case -949692403 :
+                  return "scroll";
+              
+            }
+          })();
+    }
+    if (prim$83 !== undefined) {
+      tmp.padding = Caml_option.valFromOption(prim$83);
+    }
+    if (prim$84 !== undefined) {
+      tmp.paddingBottom = Caml_option.valFromOption(prim$84);
+    }
+    if (prim$85 !== undefined) {
+      tmp.paddingEnd = Caml_option.valFromOption(prim$85);
+    }
+    if (prim$86 !== undefined) {
+      tmp.paddingHorizontal = Caml_option.valFromOption(prim$86);
+    }
+    if (prim$87 !== undefined) {
+      tmp.paddingLeft = Caml_option.valFromOption(prim$87);
+    }
+    if (prim$88 !== undefined) {
+      tmp.paddingRight = Caml_option.valFromOption(prim$88);
+    }
+    if (prim$89 !== undefined) {
+      tmp.paddingStart = Caml_option.valFromOption(prim$89);
+    }
+    if (prim$90 !== undefined) {
+      tmp.paddingTop = Caml_option.valFromOption(prim$90);
+    }
+    if (prim$91 !== undefined) {
+      tmp.paddingVertical = Caml_option.valFromOption(prim$91);
+    }
+    if (prim$92 !== undefined) {
+      tmp.position = (function () {
+            switch (Caml_option.valFromOption(prim$92)) {
+              case -1013592457 :
+                  return "absolute";
+              case 903134412 :
+                  return "relative";
+              
+            }
+          })();
+    }
+    if (prim$93 !== undefined) {
+      tmp.right = Caml_option.valFromOption(prim$93);
+    }
+    if (prim$94 !== undefined) {
+      tmp.start = Caml_option.valFromOption(prim$94);
+    }
+    if (prim$95 !== undefined) {
+      tmp.top = Caml_option.valFromOption(prim$95);
+    }
+    if (prim$96 !== undefined) {
+      tmp.width = Caml_option.valFromOption(prim$96);
+    }
+    if (prim$97 !== undefined) {
+      tmp.zIndex = Caml_option.valFromOption(prim$97);
+    }
+    return tmp;
+  };
   var resolvedStyle = [
     {
       fontFamily: theme.text.fontFamily,
-      fontSize: fontSize
+      fontSize: themeFontSize
     },
-    styleText
+    $$Option.$less$$great(textShadowOffset, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Caml_option.some(s), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(color, (function (s) {
+            return t(s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(fontSize, (function (s) {
+            return t(undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(fontStyle, (function (s) {
+            return t(undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(fontWeight, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(lineHeight, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textAlign, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textDecorationLine, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textShadowColor, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(fontFamily, (function (s) {
+            return t(undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textShadowRadius, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(includeFontPadding, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textAlignVertical, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(fontVariant, (function (s) {
+            return t(undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(letterSpacing, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textDecorationColor, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textDecorationStyle, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(textTransform, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    $$Option.$less$$great(writingDirection, (function (s) {
+            return t(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, s, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+          })),
+    style
   ];
-  return React.createElement(ReactNative.Text, {
-              style: resolvedStyle,
-              children: value
-            });
+  var reactChildren = children !== undefined ? [Caml_option.valFromOption(children)] : [value];
+  return Caml_splice_call.spliceApply(React.cloneElement, [
+              component,
+              {
+                style: resolvedStyle
+              },
+              reactChildren
+            ]);
 }
 
 var make = $$Text;
