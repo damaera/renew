@@ -1,28 +1,43 @@
 open ReactNative.Style;
 
 [@react.component]
-let make = (~component=<ReactNative.TextInput onFocus={_ => ()} />, ~style=?) => {
+let make =
+    (
+      ~component=<ReactNative.TextInput />,
+      ~onFocus=_ => (),
+      ~onBlur=_ => (),
+      ~style=?,
+    ) => {
   let theme = Theme.useTheme();
+  let (isFocused, setFocused) = React.useState(_ => false);
 
   let resolvedStyle = arrayOption([|style|]);
 
-  // component
-
   let inputElement =
-    <Box
-      component
-      borderRadius={theme.input.borderRadius}
-      ph={theme.input.paddingHorizontal->dp}
-      h={theme.input.height->dp}
-      borderWidth=1.
-      borderColor={theme.colors.info}
-    />;
+    ReasonReact.cloneElement(
+      component,
+      ~props={
+        "style": resolvedStyle,
+        "onFocus": e => {
+          setFocused(_ => true);
+          onFocus(e);
+        },
+        "onBlur": e => {
+          setFocused(_ => false);
+          onBlur(e);
+        },
+      },
+      [||],
+    );
 
-  ReasonReact.cloneElement(
-    inputElement,
-    ~props={"style": resolvedStyle, "onFocus": ""},
-    [||],
-  );
+  <Box
+    component=inputElement
+    borderRadius={theme.input.borderRadius}
+    ph={theme.input.paddingHorizontal->dp}
+    h={theme.input.height->dp}
+    borderWidth=1.
+    borderColor={isFocused ? theme.colors.foreground : theme.colors.neutral300}
+  />;
 };
 
 [@genType]

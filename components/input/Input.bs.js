@@ -2,6 +2,7 @@
 'use strict';
 
 var Box = require("../box/Box.bs.js");
+var Curry = require("bs-platform/lib/js/curry.js");
 var Theme = require("../theme/Theme.bs.js");
 var React = require("react");
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
@@ -9,25 +10,44 @@ var ReactNative = require("react-native");
 
 function Input(Props) {
   var componentOpt = Props.component;
+  var onFocusOpt = Props.onFocus;
+  var onBlurOpt = Props.onBlur;
   var style = Props.style;
-  var component = componentOpt !== undefined ? Caml_option.valFromOption(componentOpt) : React.createElement(ReactNative.TextInput, {
-          onFocus: (function (param) {
-              
-            })
-        });
-  var theme = Theme.useTheme(undefined);
-  var resolvedStyle = [style];
-  var inputElement = React.createElement(Box.make, {
-        ph: theme.input.paddingHorizontal,
-        h: theme.input.height,
-        borderWidth: 1,
-        borderRadius: theme.input.borderRadius,
-        borderColor: theme.colors.info,
-        component: component
+  var component = componentOpt !== undefined ? Caml_option.valFromOption(componentOpt) : React.createElement(ReactNative.TextInput, { });
+  var onFocus = onFocusOpt !== undefined ? onFocusOpt : (function (param) {
+        
       });
-  return React.cloneElement(inputElement, {
-              style: resolvedStyle,
-              onFocus: ""
+  var onBlur = onBlurOpt !== undefined ? onBlurOpt : (function (param) {
+        
+      });
+  var theme = Theme.useTheme(undefined);
+  var match = React.useState((function () {
+          return false;
+        }));
+  var setFocused = match[1];
+  var resolvedStyle = [style];
+  var inputElement = React.cloneElement(component, {
+        style: resolvedStyle,
+        onFocus: (function (e) {
+            Curry._1(setFocused, (function (param) {
+                    return true;
+                  }));
+            return Curry._1(onFocus, e);
+          }),
+        onBlur: (function (e) {
+            Curry._1(setFocused, (function (param) {
+                    return false;
+                  }));
+            return Curry._1(onBlur, e);
+          })
+      });
+  return React.createElement(Box.make, {
+              ph: theme.input.paddingHorizontal,
+              h: theme.input.height,
+              borderWidth: 1,
+              borderRadius: theme.input.borderRadius,
+              borderColor: match[0] ? theme.colors.foreground : theme.colors.neutral300,
+              component: inputElement
             });
 }
 
