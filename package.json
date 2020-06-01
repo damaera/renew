@@ -1,13 +1,17 @@
 {
   "name": "@damaera/renew",
   "version": "0.0.1",
+  "main": "./components/index.js",
+  "types": "./components/index.d.ts",
   "scripts": {
     "next-dev": "next",
     "next-build": "next build",
     "next-start": "next start",
     "re-dev": "bsb -clean-world -make-world -w",
     "re-build": "bsb -clean-world -make-world",
-    "re-clean": "bsb -clean-world"
+    "re-clean": "bsb -clean-world",
+    "gen-d-ts": "tsc -d components/index.ts",
+    "build": "yarn re-build && yarn gen-d-ts"
   },
   "dependencies": {
     "gentype": "^3.22.0",
