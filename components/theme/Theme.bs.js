@@ -3,6 +3,7 @@
 
 var React = require("react");
 var Text_Theme = require("../text/Text_Theme.bs.js");
+var Input_Theme = require("../input/Input_Theme.bs.js");
 var Theme_Space = require("./Theme_Space.bs.js");
 var Button_Theme = require("../button/Button_Theme.bs.js");
 var Theme_Colors = require("./Theme_Colors.bs.js");
@@ -13,7 +14,8 @@ var defaultTheme = {
   colors: Theme_Colors.light,
   button: Button_Theme.defaultTheme,
   text: Text_Theme.defaultTheme,
-  space: Theme_Space.defaultTheme
+  space: Theme_Space.defaultTheme,
+  input: Input_Theme.defaultTheme
 };
 
 var themeContext = React.createContext(defaultTheme);

@@ -9,6 +9,8 @@ const ThemeBS = require('./Theme.bs');
 
 import {t as Button_Theme_t} from '../../components/button/Button_Theme.gen';
 
+import {t as Input_Theme_t} from '../../components/input/Input_Theme.gen';
+
 import {t as Text_Theme_t} from '../../components/text/Text_Theme.gen';
 
 import {t as Theme_Breakpoints_t} from './Theme_Breakpoints.gen';
@@ -23,7 +25,8 @@ export type t = {
   readonly colors: Theme_Colors_t; 
   readonly button: Button_Theme_t; 
   readonly text: Text_Theme_t; 
-  readonly space: Theme_Space_t
+  readonly space: Theme_Space_t; 
+  readonly input: Input_Theme_t
 };
 
 export const defaultTheme: t = ThemeBS.defaultTheme;
