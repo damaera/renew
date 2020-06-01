@@ -1,6 +1,6 @@
 {
   "name": "@damaera/renew",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "./components/index.js",
   "types": "./components/index.d.ts",
   "scripts": {
