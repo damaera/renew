@@ -35,5 +35,5 @@ yarn-error.log*
 .merlin
 
 
-/**.gen.tsx
-/**.bs.js
+*.gen.tsx
+*.bs.js
