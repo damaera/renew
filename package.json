@@ -6,7 +6,8 @@
     "next-build": "next build",
     "next-start": "next start",
     "re-dev": "bsb -clean-world -make-world -w",
-    "re-build": "bsb -clean-world -make-world"
+    "re-build": "bsb -clean-world -make-world",
+    "re-clean": "bsb -clean-world"
   },
   "dependencies": {
     "gentype": "^3.22.0",
