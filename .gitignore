@@ -33,3 +33,7 @@ yarn-error.log*
 /lib
 .bsb.lock
 .merlin
+
+
+/**.gen.tsx
+/**.bs.js
