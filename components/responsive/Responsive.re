@@ -19,21 +19,13 @@ type resDisplayT = {
 };
 
 let useWindowWidth = () => {
-  let (windowWidth, setWindowWidth) = React.useState(() => 0.);
-
-  React.useEffect1(
-    () => {
-      let handler = v =>
-        if (v##window##width != windowWidth) {
-          setWindowWidth(_ => v##window##width);
-        };
-      ReactNative.Dimensions.addEventListener(`change, handler);
-      Some(
-        () => ReactNative.Dimensions.removeEventListener(`change, handler),
-      );
-    },
-    [|windowWidth|],
-  );
+  let initial = ReactNative.Dimensions.get(`window);
+  let (windowWidth, setWindowWidth) = React.useState(() => initial##width);
+  let handler = v => setWindowWidth(_ => v##window##width);
+  React.useEffect0(() => {
+    ReactNative.Dimensions.addEventListener(`change, handler);
+    Some(() => ReactNative.Dimensions.removeEventListener(`change, handler));
+  });
 
   windowWidth;
 };
