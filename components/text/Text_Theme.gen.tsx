@@ -20,6 +20,14 @@ export type sizeT = {
 };
 
 // tslint:disable-next-line:interface-over-type-literal
-export type t = { readonly fontSize: sizeT; readonly fontFamily: string };
+export type fontFamilyT = {
+  readonly body: string; 
+  readonly heading: string; 
+  readonly tertiary: string; 
+  readonly monospace: string
+};
+
+// tslint:disable-next-line:interface-over-type-literal
+export type t = { readonly fontSize: sizeT; readonly fontFamily: fontFamilyT };
 
 export const defaultTheme: t = Text_ThemeBS.defaultTheme;

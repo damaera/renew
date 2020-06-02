@@ -61,8 +61,6 @@ let make =
       ~minW=?,
       ~minH=?,
       ~aspectRatio=?,
-      //
-      ~resW: option(resSizeT)=?,
       /* bg */
       ~bg=?,
       /* opacity */
@@ -106,31 +104,8 @@ let make =
       ~children=?,
       ~component=<View />,
     ) => {
-  let theme = Theme.useTheme();
-  let breakpoints = theme.breakpoints;
-
-  let windowWidth = Responsive.useWindowWidth();
-
-  let screenSize =
-    switch (windowWidth) {
-    | a when a > breakpoints.xl => `xl
-    | a when a > breakpoints.lg => `lg
-    | a when a > breakpoints.md => `md
-    | a when a > breakpoints.sm => `sm
-    | _ => `xs
-    };
   /* theme */
   let pt_ = pt;
-
-  // responsiveValue size
-  let resSizeV = (v: resSizeT) =>
-    switch (screenSize) {
-    | `xs => v.xs
-    | `sm => v.sm
-    | `md => v.md
-    | `lg => v.lg
-    | `xl => v.xl
-    };
 
   // value
   let v = Style.viewStyle;
@@ -176,8 +151,6 @@ let make =
       minW <$> (w => v(~minWidth=w, ())),
       minH <$> (h => v(~minHeight=h, ())),
       aspectRatio <$> (a => v(~aspectRatio=a, ())),
-      //
-      resW <$> (w => v(~width=resSizeV(w), ())),
       // position
       position <$> (p => v(~position=p, ())),
       top <$> (t => v(~top=t, ())),

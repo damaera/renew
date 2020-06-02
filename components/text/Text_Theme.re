@@ -11,16 +11,28 @@ type sizeT = {
   _6xl: float,
 };
 
+type fontFamilyT = {
+  body: string,
+  heading: string,
+  tertiary: string,
+  monospace: string,
+};
+
 type t = {
   fontSize: sizeT,
-  fontFamily: string,
+  fontFamily: fontFamilyT,
 };
-// https://type-scale.com/
-// scale: Major Third
-// base size = 14
 [@genType]
 let defaultTheme: t = {
-  fontFamily: "",
+  fontFamily: {
+    body: "",
+    heading: "",
+    tertiary: "",
+    monospace: "",
+  },
+  // https://type-scale.com/
+  // scale: Major Third
+  // base size = 14
   fontSize: {
     xs: 8.96,
     sm: 11.2,

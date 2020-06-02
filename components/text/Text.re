@@ -1,5 +1,7 @@
 open Option;
 
+type variantT = [ | `body | `heading | `tertiary | `monospace];
+
 [@react.component]
 let make =
     (
@@ -9,6 +11,7 @@ let make =
       ~style=?,
       // size theme
       ~size=`md,
+      ~variant: variantT=`body,
       // rn style props
       ~textShadowOffset=?,
       ~color=?,
@@ -48,6 +51,14 @@ let make =
     | `_6xl => theme.text.fontSize._6xl
     };
 
+  let fontFamilyThemeStyle =
+    switch (variant) {
+    | `body => theme.text.fontFamily.body
+    | `heading => theme.text.fontFamily.heading
+    | `tertiary => theme.text.fontFamily.tertiary
+    | `monospace => theme.text.fontFamily.monospace
+    };
+
   let t = ReactNative.Style.textStyle;
 
   let resolvedStyle =
@@ -56,7 +67,7 @@ let make =
         Some(
           textStyle(
             ~fontSize=themeFontSize,
-            ~fontFamily=theme.text.fontFamily,
+            ~fontFamily=fontFamilyThemeStyle,
             (),
           ),
         ),
