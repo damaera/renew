@@ -10,3 +10,5 @@ export type Style_offset = number | string;
 export type Color_t = string;
 
 export type FontVariant_t = RN.FontVariant;
+
+export type Event_pressEvent = RN.GestureResponderEvent;

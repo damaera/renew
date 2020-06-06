@@ -1,5 +1,6 @@
 import Box from "./box/Box.gen";
 import Button from "./button/Button.gen";
+import Dropdown from "./dropdown/Dropdown.gen";
 import Input from "./input/Input.gen";
 import Responsive from "./responsive/Responsive.gen";
 import Spacer from "./spacer/Spacer.gen";
@@ -16,4 +17,5 @@ export {
   Input,
   Text,
   Responsive,
+  Dropdown,
 };

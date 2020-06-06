@@ -34,6 +34,7 @@ let make =
       ~style=?,
       ~textStyle=?,
       ~children=?,
+      ~onPress=_ => (),
     ) => {
   let theme = Theme.useTheme();
 
@@ -151,13 +152,15 @@ let make =
   let resolvedTextStyle =
     Style.(arrayOption([|Some(typeStyleText), styleText|]));
 
+  let baseRem = theme.text.fontSize.md;
+
   let spacerSize =
     switch (size) {
-    | `xs => theme.text.fontSize.xs /. 2.
-    | `sm => theme.text.fontSize.sm /. 2.
-    | `md => theme.text.fontSize.md /. 2.
-    | `lg => theme.text.fontSize.lg /. 2.
-    | `xl => theme.text.fontSize.xl /. 2.
+    | `xs => theme.text.fontSize.xs /. baseRem
+    | `sm => theme.text.fontSize.sm /. baseRem
+    | `md => 1.
+    | `lg => theme.text.fontSize.lg /. baseRem
+    | `xl => theme.text.fontSize.xl /. baseRem
     };
 
   let onHoverIn = () => {
@@ -170,7 +173,11 @@ let make =
   <Hoverable onHoverIn onHoverOut>
     <Box
       component={
-        <TouchableOpacity activeOpacity=0.7 accessibilityRole=`button />
+        <TouchableOpacity
+          activeOpacity=0.7
+          accessibilityRole=`button
+          onPress
+        />
       }
       flexDirection=`row
       alignItems=`center
@@ -184,7 +191,7 @@ let make =
       style=resolvedStyle>
       {switch (prefixElement) {
        | Some(element) =>
-         <> <View> element </View> <Spacer x=spacerSize /> </>
+         <> <View> element </View> <Spacer v=spacerSize /> </>
        | None => React.null
        }}
       <View>
@@ -202,7 +209,7 @@ let make =
       </View>
       {switch (suffixElement) {
        | Some(element) =>
-         <> <Spacer x=spacerSize /> <View> element </View> </>
+         <> <Spacer v=spacerSize /> <View> element </View> </>
        | None => React.null
        }}
     </Box>

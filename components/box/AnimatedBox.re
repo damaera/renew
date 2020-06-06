@@ -94,7 +94,7 @@ let make =
       /* rest */
       ~style=?,
       ~children=?,
-      ~component=<View />,
+      ~component=<Animated.View />,
     ) => {
   /* theme */
   let pt_ = pt;

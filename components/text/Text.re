@@ -91,6 +91,7 @@ let make =
         textDecorationStyle <$> (s => t(~textDecorationStyle=s, ())),
         textTransform <$> (s => t(~textTransform=s, ())),
         writingDirection <$> (s => t(~writingDirection=s, ())),
+        //
         styleText,
       |])
     );
