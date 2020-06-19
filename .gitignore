@@ -34,8 +34,10 @@ yarn-error.log*
 .bsb.lock
 .merlin
 
-components/index.js
-components/index.d.ts
+src/index.js
+src/index.d.ts
 
 *.gen.tsx
 *.bs.js
+
+/.docz/

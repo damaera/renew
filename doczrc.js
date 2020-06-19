@@ -1,3 +1,5 @@
 export default {
-  title: "React Native",
+  title: "Renew",
+  src: "./src",
+  base: "./src",
 };

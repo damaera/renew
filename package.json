@@ -4,19 +4,19 @@
   "main": "./components/index.js",
   "types": "./components/index.d.ts",
   "scripts": {
-    "next-dev": "next",
-    "next-build": "next build",
-    "next-start": "next start",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve",
     "re-dev": "bsb -clean-world -make-world -w",
     "re-build": "bsb -clean-world -make-world",
     "re-clean": "bsb -clean-world",
-    "gen-d-ts": "tsc -d components/index.ts",
+    "gen-d-ts": "tsc -d src/index.ts",
     "build": "yarn re-build && yarn gen-d-ts"
   },
   "dependencies": {
     "gentype": "^3.22.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-native": "^0.62.2",
     "react-native-web": "^0.11.6",
     "reason-react": "^0.7.0",
@@ -28,7 +28,6 @@
     "babel-plugin-react-native-web": "^0.11.7",
     "bs-platform": "^7.3.2",
     "docz": "^2.3.1",
-    "next": "latest",
     "typescript": "^3.9.3"
   }
 }

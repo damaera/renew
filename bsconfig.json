@@ -2,15 +2,7 @@
   "name": "renew",
   "sources": [
     {
-      "dir": "components",
-      "subdirs": true
-    },
-    {
-      "dir": "pages",
-      "subdirs": true
-    },
-    {
-      "dir": "bindings",
+      "dir": "src",
       "subdirs": true
     }
   ],
