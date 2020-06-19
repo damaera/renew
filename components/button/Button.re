@@ -126,7 +126,7 @@ let make =
 
   let typeStyleText =
     switch (variant) {
-    | `solid => Style.textStyle(~color=theme.button.textColor.solid, ())
+    | `solid => Style.textStyle(~color=theme.button.solidTextColor, ())
     | `outline => Style.textStyle(~color=color.dark, ())
     | `ghost => Style.textStyle(~color=color.normal, ())
     | `light => Style.textStyle(~color=color.darker, ())

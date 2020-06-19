@@ -23,11 +23,12 @@
     "reason-react-native": "^0.61.1"
   },
   "devDependencies": {
-    "next": "latest",
     "@types/react": "^16.9.35",
     "@types/react-native": "^0.62.10",
     "babel-plugin-react-native-web": "^0.11.7",
     "bs-platform": "^7.3.2",
+    "docz": "^2.3.1",
+    "next": "latest",
     "typescript": "^3.9.3"
   }
 }
