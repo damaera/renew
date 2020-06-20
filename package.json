@@ -1,12 +1,9 @@
 {
   "name": "@damaera/renew",
   "version": "0.0.3",
-  "main": "./components/index.js",
-  "types": "./components/index.d.ts",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "scripts": {
-    "docz:dev": "docz dev",
-    "docz:build": "docz build",
-    "docz:serve": "docz build && docz serve",
     "re-dev": "bsb -clean-world -make-world -w",
     "re-build": "bsb -clean-world -make-world",
     "re-clean": "bsb -clean-world",
@@ -27,7 +24,6 @@
     "@types/react-native": "^0.62.10",
     "babel-plugin-react-native-web": "^0.11.7",
     "bs-platform": "^7.3.2",
-    "docz": "^2.3.1",
     "typescript": "^3.9.3"
   }
 }
